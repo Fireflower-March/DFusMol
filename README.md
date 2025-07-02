@@ -11,4 +11,4 @@ To get started with the project, clone the repository and install the required d
 To run the fine-tuning process, execute the following shell script from your terminal:
 
 ```bash
-bash finetune.sh
+bash begin_train.sh
