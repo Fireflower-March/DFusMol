@@ -47,8 +47,8 @@ class MolGraph:
 
                 f_bond = bond_features(bond)
 
-                #不管atom_messages是true还是false，原子始终是消息传递的枢纽
-                #如果是True，则原子信息只从邻居原子聚合，为False则还要经过键
+                
+                
                 self.f_bonds.append(self.f_atoms[a1] + f_bond)
                 self.f_bonds.append(self.f_atoms[a2] + f_bond)
 
@@ -107,7 +107,7 @@ class BatchMolGraph:
         
         bonds = np.array(bonds).transpose(1,0)
         
-        self.max_num_bonds = max(1, max(len(in_bonds) for in_bonds in a2b)) # 计算原子之间的最大连接数
+        self.max_num_bonds = max(1, max(len(in_bonds) for in_bonds in a2b)) 
         
         self.f_atoms = torch.FloatTensor(f_atoms)
         self.f_bonds = torch.FloatTensor(f_bonds)
@@ -129,7 +129,7 @@ def mol2graph(smiles_batch: List[str],
               args: Namespace) -> BatchMolGraph:
 
     mol_graphs = []
-    for smiles in smiles_batch:  ##批次中每个分子遍历
+    for smiles in smiles_batch:  
         mol_graph = MolGraph(smiles, args)
         mol_graphs.append(mol_graph)
 

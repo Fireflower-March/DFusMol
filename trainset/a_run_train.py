@@ -51,13 +51,13 @@ def a_run_training(args: Namespace,data, logger: Logger = None) -> List[float]:
     train_data, val_data, test_data = split_data(data=data, split_type=args.split_type, sizes=args.split_sizes, seed=args.seed, args=args, logger=logger)
 
     if args.dataset_type == 'classification':
-        class_sizes = get_class_sizes(data)  #每个任务的0和1的比例 [[0.3,0.7],[],[]..]
+        class_sizes = get_class_sizes(data)  # [[0.3,0.7],[],[]..]
         debug('Class sizes')
         for i, task_class_sizes in enumerate(class_sizes):
             debug(f'{args.task_names[i]} '
                   f'{", ".join(f"{cls}: {size * 100:.2f}%" for cls, size in enumerate(task_class_sizes))}')
 
-    if args.features_scaling:  #对数据集做归一化处理，避免因特征尺度不同而影响模型的训练和预测结果
+    if args.features_scaling:  
         features_scaler = None
 
     args.train_data_size = len(train_data)

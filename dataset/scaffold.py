@@ -54,7 +54,7 @@ def scaffold_split(data: MoleculeDataset,
     # Map from scaffold to index in the data
     scaffold_to_indices = scaffold_to_smiles(data.mols(), use_indices=True)
 
-    if balanced:  # 将大于 val/test 大小的一半的东西放入 train 中，其余的只是随机排序
+    if balanced:  #Put items larger than half of the val/test size into the train set, and randomly shuffle the rest.
         index_sets = list(scaffold_to_indices.values())
         big_index_sets = []
         small_index_sets = []
@@ -72,7 +72,7 @@ def scaffold_split(data: MoleculeDataset,
                             key=lambda index_set: len(index_set),
                             reverse=True)
 
-    #打乱后分配给三个数据集
+    #Shuffle and assign to the three datasets
     for index_set in index_sets:
         if len(train) + len(index_set) <= train_size:
             train += index_set

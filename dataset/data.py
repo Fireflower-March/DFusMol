@@ -88,7 +88,7 @@ class MoleculeDatapoint:
         self.targets = targets
 
 
-##整个数据集的容器
+##Container for the entire dataset
 class MoleculeDataset(Dataset):
     """A MoleculeDataset contains a list of molecules and their associated features and targets."""
 
@@ -341,15 +341,15 @@ class Mol_Tokenizer():
 
 def hash_to_float(hash_value, range_min=0, range_max=1):
     """
-    将哈希值转换为浮点数并映射到指定范围。
-    :param hash_value: 哈希值（字符串形式）。
-    :param range_min: 映射的最小值。
-    :param range_max: 映射的最大值。
-    :return: 映射后的浮点数。
+    Convert the hash value to a floating-point number and map it to the specified range.  
+    param hash_value: The hash value (in string form).  
+    param range_min: The minimum value of the target range.  
+    param range_max: The maximum value of the target range.  
+    return: The mapped floating-point number.
     """
-    # 将哈希值转换为整数
-    int_value = int(hash_value, 16)  # 转换为十进制整数
-    # 映射到 [0, 1]
-    normalized_value = int_value % (10 ** 8) / (10 ** 8)  # 截断以避免过大数值
-    # 映射到指定范围
+    # Convert the hash value to an integer
+    int_value = int(hash_value, 16)  # Convert to a decimal integer
+    # # Map to [0, 1]
+    normalized_value = int_value % (10 ** 8) / (10 ** 8)  # Truncate to avoid excessively large values
+    # Map to the specified range
     return range_min + (range_max - range_min) * normalized_value

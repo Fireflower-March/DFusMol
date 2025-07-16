@@ -93,9 +93,9 @@ def initialize_weights(model: nn.Module):
                 elif 'bias' in name:
                     nn.init.constant_(param, 0.0)  # Normalization layers的β, 通常应初始化为0
             elif 'bias' in name:
-                nn.init.constant_(param, 0.0)  # 偏置项通常初始化为0
+                nn.init.constant_(param, 0.0)  
             else:
-                # 默认情况下使用Xavier初始化
+                
                 if param.dim() >= 2:
                     nn.init.xavier_normal_(param)
 

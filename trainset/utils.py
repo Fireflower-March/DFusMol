@@ -326,8 +326,8 @@ def create_logger(name: str, save_dir: str = None, quiet: bool = False) -> loggi
 
 
 def set_seed(seed):
-    random.seed(seed)            # 设置 Python 内置随机库的种子
-    np.random.seed(seed)         # 设置 NumPy 随机库的种子
-    torch.manual_seed(seed)      # 设置 PyTorch 随机库的种子
+    random.seed(seed)            
+    np.random.seed(seed)         
+    torch.manual_seed(seed)      
     if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(seed)  # 如果使用了CUDA，也设置CUDA的种子
+        torch.cuda.manual_seed_all(seed)  

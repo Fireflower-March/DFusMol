@@ -14,12 +14,12 @@ def create_padding_mask_atom(batch_data):
     return padding_mask[:, None, None, :]  # [batch_size, 1, 1, seq_len]
 
 
-#完成QKV以及各种矩阵的使用
+
 def scaled_dot_product_attention(q, k, v, mask, adjoin_matrix, dist_matrix):
     """Calculate the attention weights."""
     if dist_matrix is not None:
         matmul_qk = F.relu(torch.matmul(q, k.transpose(-2, -1))) #(batch_size, num_heads, atom_len, atom_len)
-        dist_matrix = rescale_distance_matrix(dist_matrix) #对矩阵里的数字进行缩放，节点距离越大则越大
+        dist_matrix = rescale_distance_matrix(dist_matrix) 
         dk = k.size(-1)
         scaled_attention_logits = (matmul_qk * dist_matrix) / torch.sqrt(torch.tensor(dk, dtype=q.dtype))
     else:
@@ -104,23 +104,23 @@ class EncoderLayer(nn.Module):
     def forward(self, x, encoder_padding_mask, adjoin_matrix, dist_matrix):
         x1, x2 = torch.split(x, x.size(-1) // 2, dim=-1) #[batch_size,atom_len,256]
 
-        ##局部注意力↓↓↓↓↓↓↓↓↓
+        
         x_l, attention_weights_local = self.mha1(
             x1, x1, x1, encoder_padding_mask, adjoin_matrix, dist_matrix=None)
         x_g, attention_weights_global = self.mha2(
             x2, x2, x2, encoder_padding_mask, adjoin_matrix=None, dist_matrix=dist_matrix)
-        ##全局注意力↑↑↑↑↑↑↑↑↑
+        
 
         #x_l,x_g:[batch_size, atom_len, 256],
         #attention_weights_local,attention_weights_global:[batch_size, num_heads, atom_len, atom_len]
 
         attn_output = torch.cat([x_l, x_g], dim=-1) #[batch_size, atom_len, 512]
         attn_output = self.dropout1(attn_output)
-        out1 = self.layer_norm1(x + attn_output) #残差连接+归一化
+        out1 = self.layer_norm1(x + attn_output) 
 
         ffn_output = self.ffn(out1)  #MLP
         ffn_output = self.dropout2(ffn_output) 
-        out2 = self.layer_norm2(out1 + ffn_output) #残差连接+归一化2
+        out2 = self.layer_norm2(out1 + ffn_output) 
         x_l_g = out2
         return x_l_g, attention_weights_local, attention_weights_global
 
@@ -147,7 +147,7 @@ class EncoderModel_atom(nn.Module):
     def forward(self, x, adjoin_matrix=None,
                 dist_matrix=None, atom_match_matrix=None, sum_atoms=None):
         batch_size = x.size(0) # x=[batch_size,atom_len,f_dim]
-        encoder_padding_mask = create_padding_mask_atom(x) # [batch_size, 1, 1, atom_len] 特征维度被sum成0/1，0代表特征全0
+        encoder_padding_mask = create_padding_mask_atom(x) # [batch_size, 1, 1, atom_len] 
         if adjoin_matrix is not None:
             adjoin_matrix = adjoin_matrix.unsqueeze(1)
         if dist_matrix is not None:
@@ -167,13 +167,13 @@ class EncoderModel_atom(nn.Module):
         # x :[batch_size, max_atom_len, 256]
         # atom_match_matrix :[batch_size, num_motifs, num_atoms_in_batch(atom_len)]
 
-        # 原子级特征聚合到分子级别
+        
         if atom_match_matrix is not None and sum_atoms is not None:
             x = torch.matmul(atom_match_matrix, x)
             x = x / sum_atoms
             x = self.global_embedding(x)
         else:
-            # 如果不需要聚合，可以直接返回 x
+            
             pass
 
         return x, attention_weights_list_local, attention_weights_list_global, encoder_padding_mask

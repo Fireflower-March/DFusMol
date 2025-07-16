@@ -92,24 +92,23 @@ def get_data(path: str,
     # Load data
     with open(path) as f:
         reader = csv.reader(f)
-        next(reader)  # 跳过第一行
+        next(reader)  
 
         lines = []
-        for line in reader:     #对每一行
+        for line in reader:     
             smiles = line[0]
 
             if smiles in skip_smiles:
                 continue
             count += 1
             lines.append(line)
-            # if count > 300:
-            #     break
+
 
         data = MoleculeDataset([
         MoleculeDatapoint(
             line=line,
-            tokenizer=args.tokenizer,  # 传入必要的tokenizer
-            map_dict=args.map_dict,    # 传入必要的map_dict
+            tokenizer=args.tokenizer,  
+            map_dict=args.map_dict,   
             args=args
         ) for i, line in tqdm(enumerate(lines), total=len(lines))
     ])
@@ -205,16 +204,16 @@ def get_class_sizes(data: MoleculeDataset) -> List[List[float]]:
     class_sizes = []
     for task_targets in valid_targets:
         
-        assert set(np.unique(task_targets)) <= {0, 1} #确认是二分类
+        assert set(np.unique(task_targets)) <= {0, 1} 
 
         try:
-            ones = np.count_nonzero(task_targets) / len(task_targets) #查看单个任务的标签为1的比例
+            ones = np.count_nonzero(task_targets) / len(task_targets) 
         except ZeroDivisionError:
             ones = float('nan')
             print('Warning: class has no targets')
         class_sizes.append([1 - ones, ones])
 
-    return class_sizes  #返回的每个任务的0和1的比例 [[0.3,0.7],[],[]..]
+    return class_sizes  
 
 
 def validate_data(data_path: str) -> Set[str]:

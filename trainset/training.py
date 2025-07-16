@@ -48,7 +48,7 @@ def train(model: nn.Module,
         step = 'finetune'
         # Run model
         model.zero_grad()
-        preds = model(step, smiles_batch,info_batch)   ####模型传入smiles,info
+        preds = model(step, smiles_batch,info_batch)   
         if args.dataset_type == 'multiclass':
             targets = targets.long()
             loss = torch.cat([loss_func(preds[:, target_index, :], targets[:, target_index]).unsqueeze(1) for target_index in range(preds.size(1))], dim=1) * class_weights * mask

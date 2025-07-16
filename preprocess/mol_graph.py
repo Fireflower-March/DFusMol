@@ -80,7 +80,7 @@ def array_rep_from_smiles(smiles):
     arrayrep = {
         'rdkit_ix': molgraph.rdkit_ix_array()
     }
-    # 将numpy数组转换为torch张量
+    
     arrayrep['rdkit_ix'] = torch.from_numpy(arrayrep['rdkit_ix']).long()
 
     return arrayrep

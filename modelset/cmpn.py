@@ -25,7 +25,7 @@ class CMPNEncoder(nn.Module):
         self.dropout = args.dropout
         self.layers_per_message = 1
         self.args = args
-        #模块
+        
 
         # Dropout
         self.dropout_layer = nn.Dropout(p=self.dropout)
@@ -81,22 +81,22 @@ class CMPNEncoder(nn.Module):
         #Message passing
         for depth in range(self.depth - 1):
 
-            agg_message = index_select_ND(message_bond, a2b) #找到每个原子相连的所有边
-            agg_message = agg_message.sum(dim=1) * agg_message.max(dim=1)[0] #将这些边的特征取均值*最大值
-            message_atom = message_atom + agg_message #相邻的边聚合后的特征加上当前原子本身的特征
+            agg_message = index_select_ND(message_bond, a2b) 
+            agg_message = agg_message.sum(dim=1) * agg_message.max(dim=1)[0] 
+            message_atom = message_atom + agg_message 
             
             # directed graph
-            rev_message = message_bond[b2revb]  # num_bonds x hidden #得到反向键的特征
-            message_bond = message_atom[b2a] - rev_message  # num_bonds x hidden #用键的起点原子特征-反向键的特征来更新键的特征
-            #因为原子特征已经聚合了边的特征，所以这里可以用来更新键特征
+            rev_message = message_bond[b2revb]  # num_bonds x hidden 
+            message_bond = message_atom[b2a] - rev_message  # num_bonds x hidden
+            
             
             message_bond = self._modules[f'W_h_{depth}'](message_bond)
-            message_bond = self.dropout_layer(self.act_func(input_bond + message_bond)) #残差链接
+            message_bond = self.dropout_layer(self.act_func(input_bond + message_bond)) 
 
-        #最后一次更新原子特征
+        
         agg_message = index_select_ND(message_bond, a2b)
         agg_message = agg_message.sum(dim=1) * agg_message.max(dim=1)[0]
-        agg_message = self.lr(torch.cat([agg_message, message_atom, input_atom], 1))#相邻边特征+当前原子特征+初始原子特征
+        agg_message = self.lr(torch.cat([agg_message, message_atom, input_atom], 1))
         agg_message = self.gru(agg_message, a_scope)
 
         atom_hiddens = self.act_func(self.W_o(agg_message))# num_atoms x hidden
@@ -107,11 +107,11 @@ class CMPNEncoder(nn.Module):
         for a_start, a_size in a_scope:
             if a_size == 0:
                 assert 0, "分子中原子的数量不能为零"
-            # 提取当前分子的原子特征
+            
             cur_hiddens = atom_hiddens.narrow(0, a_start, a_size)
             mol_vecs.append(cur_hiddens)
 
-        # 将不同长度的原子特征序列对齐
+        
         mol_vecs_padded = pad_sequence(mol_vecs, batch_first=True)
 
 
@@ -120,10 +120,10 @@ class CMPNEncoder(nn.Module):
         for i, (a_start, a_size) in enumerate(a_scope):
             if a_size == 0:
                 assert 0
-            cur_hiddens = atom_hiddens.narrow(0, a_start, a_size)  #取出连续多个原子的特征
-            mol_vecs.append(cur_hiddens.mean(0))   #原子特征平均
+            cur_hiddens = atom_hiddens.narrow(0, a_start, a_size)  
+            mol_vecs.append(cur_hiddens.mean(0))   
         
-        mol_vecs = torch.stack(mol_vecs, dim=0)  #多个张量堆叠
+        mol_vecs = torch.stack(mol_vecs, dim=0)  
 
         return mol_vecs_padded ,mol_vecs  # [batch_size, atom_len, f_dim]  # B x H
 

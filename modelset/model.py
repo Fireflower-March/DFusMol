@@ -71,8 +71,8 @@ class MoleculeModel(nn.Module):
 
     def forward(self,step,smiles,info):
 
-        mol_vecs_padded,mol_vecs = self.encoder_1(step,smiles)    #原子级进行内部聚合  # [batch_size, max_atom_len, dim]
-        info_output = self.encoder_2(mol_vecs_padded,mol_vecs,info)    #与基序一同进入注意力
+        mol_vecs_padded,mol_vecs = self.encoder_1(step,smiles)      # [batch_size, max_atom_len, dim]
+        info_output = self.encoder_2(mol_vecs_padded,mol_vecs,info)    
         output = self.ffn(info_output)
         # output = self.ffn(mol_vecs)
         if self.classification and not self.training:
@@ -88,7 +88,7 @@ class MoleculeModel(nn.Module):
 
 def build_model(args: Namespace) -> nn.Module:
 
-    output_size = args.num_tasks  ############这里设置了输出的任务数
+    output_size = args.num_tasks  
     args.output_size = output_size
     if args.dataset_type == 'multiclass':
         args.output_size *= args.multiclass_num_classes

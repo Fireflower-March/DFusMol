@@ -108,11 +108,11 @@ class EncoderLayer(nn.Module):
             x2, x2, x2, encoder_padding_mask, adjoin_matrix=None, dist_matrix=dist_matrix)
         attn_output = torch.cat([x_l, x_g], dim=-1)
         attn_output = self.dropout1(attn_output)
-        out1 = self.layer_norm1(x + attn_output)  #残差连接+归一化 Add & Norm
+        out1 = self.layer_norm1(x + attn_output)  #Add & Norm
 
         ffn_output = self.ffn(out1)     # feedforward
         ffn_output = self.dropout2(ffn_output)
-        out2 = self.layer_norm2(out1 + ffn_output)  #第二次残差连接+归一化 Add & Norm
+        out2 = self.layer_norm2(out1 + ffn_output)  # Add & Norm
         x_l_g = out2
         return x_l_g, attention_weights_local, attention_weights_global
 
@@ -138,8 +138,8 @@ class EncoderModel_motif(nn.Module):
         x = self.embedding(x) #[batch_size,max_motif_len,256]
         x = x * torch.sqrt(torch.tensor(self.d_model, dtype=torch.float32))
         x = self.dropout(x)
-        x_temp = x[:, 1:, :] + atom_level_features #排除掉每个分子的第一个全局基序不修改
-        x = torch.cat([x[:, 0:1, :], x_temp], dim=1) #重新添加上全局基序 [batch_size,max_motif_len,256]
+        x_temp = x[:, 1:, :] + atom_level_features 
+        x = torch.cat([x[:, 0:1, :], x_temp], dim=1) # [batch_size,max_motif_len,256]
         temp = x
         attention_weights_list_local = []
         attention_weights_list_global = []

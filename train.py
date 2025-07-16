@@ -23,7 +23,7 @@ def run_stat(args: Namespace, logger: Logger = None) -> Tuple[float, float]:
 
     # Run training on different random seeds for each run
     all_scores = []
-    data = get_data(path=args.data_path, args=args, logger=logger)  ####在这里就定义了数据的内容
+    data = get_data(path=args.data_path, args=args, logger=logger)  
     for run_num in range(args.num_runs):
         info(f'Run {run_num}')
         args.seed = init_seed + run_num
@@ -34,7 +34,7 @@ def run_stat(args: Namespace, logger: Logger = None) -> Tuple[float, float]:
         all_scores.append(model_scores)
     all_scores = np.array(all_scores)
 
-    #打印整个结果
+    
     info(f'{args.num_runs}-time runs')
     for run_num, scores in enumerate(all_scores):
         info(f'Seed {init_seed + run_num} ==> test {args.metric} = {np.nanmean(scores):.6f}')
@@ -42,7 +42,7 @@ def run_stat(args: Namespace, logger: Logger = None) -> Tuple[float, float]:
     avg_scores = np.nanmean(all_scores, axis=1)  # average score for each model across tasks
     mean_score, std_score = np.nanmean(avg_scores), np.nanstd(avg_scores)
 
-    #打印最终结果
+    
     info(f'Overall test {args.metric} = {mean_score:.6f} +/- {std_score:.6f}')
 
 
