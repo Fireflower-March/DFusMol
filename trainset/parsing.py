@@ -2,8 +2,12 @@ from argparse import ArgumentParser, Namespace
 import json
 import os
 import pickle
+from pathlib import Path
 
 import torch
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_TOKENIZER_PATH = str(REPO_ROOT / 'preprocess' / 'token_id.json')
 
 def add_train_args(parser: ArgumentParser):
     """
@@ -115,7 +119,7 @@ def add_train_args(parser: ArgumentParser):
     parser.add_argument("--exp_id", default="", type=str, required=True,
                         help="Experiment ID")
     
-    parser.add_argument("--tokenizer", default="/data/lx_data/lx_project/MyCode/preprocess/token_id.json", type=str, 
+    parser.add_argument("--tokenizer", default=DEFAULT_TOKENIZER_PATH, type=str, 
                         help="Experiment ID")
 
 
