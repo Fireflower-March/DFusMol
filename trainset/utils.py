@@ -75,6 +75,19 @@ def get_code_version(short_sha=True):
         pwd = os.path.abspath(pwd).strip()
         print(f'Working dir {pwd} is not a git repo.')
 
+
+def _load_torch_checkpoint(path: str, map_location):
+    """
+    Loads a checkpoint in a way that is compatible across PyTorch versions.
+    PyTorch 2.6 changed torch.load default weights_only to True, which breaks
+    checkpoints containing argparse.Namespace and other python objects.
+    """
+    try:
+        return torch.load(path, map_location=map_location, weights_only=False)
+    except TypeError:
+        # Older PyTorch versions do not support weights_only.
+        return torch.load(path, map_location=map_location)
+
 def load_checkpoint(path: str,
                     current_args: Namespace = None,
                     cuda: bool = None,
@@ -91,7 +104,7 @@ def load_checkpoint(path: str,
     debug = logger.debug if logger is not None else print
 
     # Load model and args
-    state = torch.load(path, map_location=lambda storage, loc: storage)
+    state = _load_torch_checkpoint(path, map_location=lambda storage, loc: storage)
     args, loaded_state_dict = state['args'], state['state_dict']
 
     if current_args is not None:
@@ -136,7 +149,7 @@ def load_scalers(path: str) -> Tuple[StandardScaler, StandardScaler]:
     :param path: Path where model checkpoint is saved.
     :return: A tuple with the data scaler and the features scaler.
     """
-    state = torch.load(path, map_location=lambda storage, loc: storage)
+    state = _load_torch_checkpoint(path, map_location=lambda storage, loc: storage)
 
     scaler = StandardScaler(state['data_scaler']['means'],
                             state['data_scaler']['stds']) if state['data_scaler'] is not None else None
@@ -154,7 +167,7 @@ def load_args(path: str) -> Namespace:
     :param path: Path where model checkpoint is saved.
     :return: The arguments Namespace that the model was trained with.
     """
-    return torch.load(path, map_location=lambda storage, loc: storage)['args']
+    return _load_torch_checkpoint(path, map_location=lambda storage, loc: storage)['args']
 
 
 def load_task_names(path: str) -> List[str]:
