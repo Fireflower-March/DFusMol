@@ -3,13 +3,15 @@ from dataset_processed import get_adj_matrix,get_dist_matrix,molgraph_rep
 import pandas as pd
 import numpy as np
 import tqdm 
+from pathlib import Path
 from rdkit import RDLogger
 RDLogger.DisableLog('rdApp.*')
 
 data = 'toxcast'
 def datapro():
+    repo_root = Path(__file__).resolve().parent.parent
 
-    toy_dataset = pd.read_csv('/data/lx_data/lx_project/MyCode/data/'+data+'.csv')
+    toy_dataset = pd.read_csv(repo_root / 'data' / f'{data}.csv')
 
     unique_SMILES_in_toy_dataset = []
     unique_SMILES_in_toy_dataset.extend(toy_dataset.smiles)
@@ -19,7 +21,7 @@ def datapro():
     all_drugs_dict = {i:{'adj_matrix':[],'dist_matrix':[],'nums_list':[],'cliques':[],'single_dict':[]} for i in unique_SMILES_in_toy_dataset} 
 
     ## load tokenizer
-    tokenizer = Mol_Tokenizer('/data/lx_data/lx_project/MyCode/preprocess/token_id.json')
+    tokenizer = Mol_Tokenizer(repo_root / 'preprocess' / 'token_id.json')
 
     for drug in tqdm.tqdm(unique_SMILES_in_toy_dataset):
         nums_list1, edges1,cliques1= tokenizer.tokenize(drug)
