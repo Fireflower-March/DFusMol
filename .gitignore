@@ -1,0 +1,45 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build and packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Test and tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# History files/folders
+.history/
+history/
+*.history
+.python_history
+.bash_history
+.zsh_history
+
+# Logs and runtime files
+*.log
+
+# Training/preprocessing outputs
+ckpt/
+dumped/
+preprocessed_molecular_*.npy
