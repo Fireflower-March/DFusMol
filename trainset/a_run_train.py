@@ -129,6 +129,7 @@ def a_run_training(args: Namespace,data, logger: Logger = None) -> List[float]:
             scheduler=scheduler,
             args=args,
             n_iter=n_iter,
+            epoch=epoch,
         )
 
         all_loss_values.append(loss_values)
