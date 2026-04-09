@@ -3,10 +3,15 @@ from pathlib import Path
 import json
 import numpy as np
 import torch
+import warnings
+from rdkit import RDLogger
 
 from dataset import get_data, split_data
 from trainset.evaluate import evaluate
 from trainset.utils import get_metric_func, load_checkpoint, load_scalers, set_seed
+
+warnings.filterwarnings('ignore')
+RDLogger.DisableLog('rdApp.*')
 
 
 REPO_ROOT = Path(__file__).resolve().parent
