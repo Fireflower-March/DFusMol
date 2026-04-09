@@ -17,11 +17,12 @@ def train(model: nn.Module,
           optimizer: Optimizer,
           scheduler: _LRScheduler,
           args: Namespace,
-          n_iter: int = 0) -> int:
+          n_iter: int = 0,
+          epoch: int = 0) -> int:
 
     model.train()
     
-    data.shuffle()
+    data.shuffle(seed=args.seed + epoch)
 
     loss_sum, iter_count = 0, 0
 
