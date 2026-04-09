@@ -1,12 +1,12 @@
 python train.py \
-    --data_path ./data/lipo.csv \
-    --dataset_type regression \
-    --epochs 5 \
-    --num_runs 1 \
+    --data_path ./data/bbbp.csv \
+    --dataset_type classification \
+    --epochs 100 \
+    --num_runs 20 \
     --gpu 0 \
     --batch_size 256 \
-    --seed 59 \
+    --seed 40 \
     --init_lr 1e-4  \
     --split_type 'scaffold_balanced' \
     --exp_name finetune \
-    --exp_id lipo \
+    --exp_id bbbp \

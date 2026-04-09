@@ -41,5 +41,4 @@ history/
 
 # Training/preprocessing outputs
 ckpt/
-dumped/
 preprocessed_molecular_*.npy
