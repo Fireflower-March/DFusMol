@@ -5,6 +5,7 @@ RDLogger.DisableLog('rdApp.*')
 from argparse import Namespace
 from logging import Logger
 import os
+import json
 from typing import Tuple
 import numpy as np
 import time
@@ -23,16 +24,32 @@ def run_stat(args: Namespace, logger: Logger = None) -> Tuple[float, float]:
 
     # Run training on different random seeds for each run
     all_scores = []
+    run_records = []
     data = get_data(path=args.data_path, args=args, logger=logger)  
     for run_num in range(args.num_runs):
-        info(f'Run {run_num}')
         args.seed = init_seed + run_num
+        info(f'Run {run_num} | Seed {args.seed}')
         set_seed(args.seed)
-        args.save_dir = os.path.join(save_dir, f'run_{run_num}')
+        # Save each seed in an explicit seed folder so checkpoints are easy to audit.
+        args.save_dir = os.path.join(save_dir, f'seed_{args.seed}')
         makedirs(args.save_dir)
         model_scores = a_run_training(args,data, logger)
         all_scores.append(model_scores)
+        model_path = os.path.join(args.save_dir, 'model.pt')
+        run_records.append({
+            'run_num': run_num,
+            'seed': args.seed,
+            'avg_test_score': float(np.nanmean(model_scores)),
+            'model_path': model_path
+        })
+        info(f'Run {run_num} checkpoint: {model_path}')
     all_scores = np.array(all_scores)
+
+    # Persist per-seed summary for later model selection and audit.
+    summary_path = os.path.join(save_dir, 'seed_results.json')
+    with open(summary_path, 'w', encoding='utf-8') as f:
+        json.dump(run_records, f, indent=2)
+    info(f'Saved seed summary: {summary_path}')
 
     
     info(f'{args.num_runs}-time runs')
@@ -41,6 +58,14 @@ def run_stat(args: Namespace, logger: Logger = None) -> Tuple[float, float]:
 
     avg_scores = np.nanmean(all_scores, axis=1)  # average score for each model across tasks
     mean_score, std_score = np.nanmean(avg_scores), np.nanstd(avg_scores)
+
+    if len(run_records) > 0:
+        if args.minimize_score:
+            best_run = min(run_records, key=lambda x: x['avg_test_score'])
+        else:
+            best_run = max(run_records, key=lambda x: x['avg_test_score'])
+        info(f'Best seed by test {args.metric}: {best_run["seed"]} | '
+             f'score={best_run["avg_test_score"]:.6f} | model={best_run["model_path"]}')
 
     
     info(f'Overall test {args.metric} = {mean_score:.6f} +/- {std_score:.6f}')
