@@ -8,7 +8,7 @@ from rdkit import RDLogger
 
 from dataset import get_data, split_data
 from trainset.evaluate import evaluate
-from trainset.utils import get_metric_func, load_checkpoint, load_scalers, set_seed
+from trainset.utils import get_metric_func, load_checkpoint, load_scalers, load_args, set_seed
 
 warnings.filterwarnings('ignore')
 RDLogger.DisableLog('rdApp.*')
@@ -23,7 +23,7 @@ def parse_args() -> argparse.Namespace:
         description='Audit-only evaluation: split data then evaluate a provided checkpoint on test set.'
     )
     parser.add_argument('--data_path', type=str, required=True, help='Path to CSV data file.')
-    parser.add_argument('--dataset_type', type=str, default='classification',
+    parser.add_argument('--dataset_type', type=str, default=None,
                         choices=['classification', 'regression', 'multiclass'],
                         help='Dataset type to select metric behavior.')
     parser.add_argument('--metric', type=str, default=None,
@@ -35,13 +35,13 @@ def parse_args() -> argparse.Namespace:
                         help='Path to tokenizer json file.')
     parser.add_argument('--map_dict', type=str, default=None,
                         help='Path to preprocessed molecular npy map. Defaults to preprocessed_molecular_<dataset>.npy.')
-    parser.add_argument('--split_type', type=str, default='scaffold_balanced',
+    parser.add_argument('--split_type', type=str, default=None,
                         choices=['random', 'scaffold_balanced', 'cluster_balanced'],
-                        help='Data split strategy.')
-    parser.add_argument('--split_sizes', type=float, nargs=3, default=[0.8, 0.1, 0.1],
-                        help='Train/val/test split sizes, e.g. 0.8 0.1 0.1.')
-    parser.add_argument('--seed', type=int, required=True,
-                        help='Seed used for split (must match the seed used during training).')
+                        help='Data split strategy. If omitted, uses checkpoint setting.')
+    parser.add_argument('--split_sizes', type=float, nargs=3, default=None,
+                        help='Train/val/test split sizes. If omitted, uses checkpoint setting.')
+    parser.add_argument('--seed', type=int, default=None,
+                        help='Seed used for split (recommended: same seed as training checkpoint).')
     parser.add_argument('--batch_size', type=int, default=256, help='Batch size for evaluation.')
     parser.add_argument('--gpu', type=int, default=None, help='CUDA device id. If omitted, uses CPU.')
     parser.add_argument('--multiclass_num_classes', type=int, default=3,
@@ -60,6 +60,18 @@ def resolve_metric(args: argparse.Namespace) -> str:
         return 'cross_entropy'
     return 'rmse'
 
+def validate_metric_dataset_type(dataset_type: str, metric: str):
+    valid = {
+        'classification': {'auc', 'prc-auc', 'accuracy'},
+        'regression': {'rmse', 'mae', 'mse', 'r2'},
+        'multiclass': {'cross_entropy', 'accuracy'}
+    }
+    if metric not in valid[dataset_type]:
+        raise ValueError(
+            f'Invalid metric "{metric}" for dataset_type "{dataset_type}". '
+            f'Allowed: {sorted(valid[dataset_type])}'
+        )
+
 
 def resolve_map_dict(args: argparse.Namespace) -> str:
     if args.map_dict is not None:
@@ -70,8 +82,24 @@ def resolve_map_dict(args: argparse.Namespace) -> str:
 
 def main():
     args = parse_args()
-    args.metric = resolve_metric(args)
-    args.map_dict = resolve_map_dict(args)
+    checkpoint_args = load_args(args.checkpoint_path)
+
+    # Prefer explicit CLI values; otherwise inherit from checkpoint to avoid mismatch.
+    if args.dataset_type is None:
+        args.dataset_type = checkpoint_args.dataset_type
+    if args.metric is None:
+        args.metric = getattr(checkpoint_args, 'metric', None) or resolve_metric(args)
+    if args.seed is None:
+        args.seed = checkpoint_args.seed
+    if args.map_dict is None:
+        args.map_dict = getattr(checkpoint_args, 'map_dict', None) or resolve_map_dict(args)
+    if args.split_type is None:
+        args.split_type = getattr(checkpoint_args, 'split_type', 'scaffold_balanced')
+    if args.split_sizes is None:
+        args.split_sizes = getattr(checkpoint_args, 'split_sizes', [0.8, 0.1, 0.1])
+
+    validate_metric_dataset_type(args.dataset_type, args.metric)
+
     args.cuda = torch.cuda.is_available() and args.gpu is not None
 
     if args.cuda:

@@ -1,11 +1,5 @@
 python only_test.py \
-    --data_path ./data/bbbp.csv \
-    --dataset_type classification \
-    --metric auc \
-    --seed 59 \
-    --split_type scaffold_balanced \
-    --split_sizes 0.8 0.1 0.1 \
+    --data_path ./data/esol.csv \
     --batch_size 256 \
     --gpu 0 \
-    --checkpoint_path ./dumped/0409-finetune/bbbp/seed_59/model.pt \
-    --map_dict ./preprocessed_molecular_bbbp.npy
+    --checkpoint_path ./trained/esol/seed_25/model.pt \

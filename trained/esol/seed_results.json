@@ -1,0 +1,8 @@
+[
+  {
+    "run_num": 0,
+    "seed": 25,
+    "avg_test_score": 0.7267378368012876,
+    "model_path": "dumped/0412-finetune/esol/seed_25/model.pt"
+  }
+]
