@@ -30,6 +30,7 @@ Thumbs.db
 
 # History files/folders
 .history/
+dumped/
 history/
 *.history
 .python_history
