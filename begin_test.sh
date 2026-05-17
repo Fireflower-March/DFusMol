@@ -1,5 +1,5 @@
 python only_test.py \
-    --data_path ./data/esol.csv \
+    --data_path ./data/bbbp.csv \
     --batch_size 256 \
     --gpu 0 \
-    --checkpoint_path ./trained/esol/seed_25/model.pt \
+    --checkpoint_path ./trained/bbbp/model.pt \

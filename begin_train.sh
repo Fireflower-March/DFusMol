@@ -2,10 +2,10 @@ python train.py \
     --data_path ./data/bbbp.csv \
     --dataset_type classification \
     --epochs 100 \
-    --num_runs 1 \
+    --num_runs 10\
     --gpu 0 \
     --batch_size 256 \
-    --seed 59 \
+    --seed 50 \
     --init_lr 1e-4  \
     --split_type 'scaffold_balanced' \
     --exp_name finetune \

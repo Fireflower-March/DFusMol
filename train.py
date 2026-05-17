@@ -25,7 +25,6 @@ def run_stat(args: Namespace, logger: Logger = None) -> Tuple[float, float]:
     # Run training on different random seeds for each run
     all_scores = []
     run_records = []
-    data = get_data(path=args.data_path, args=args, logger=logger)  
     for run_num in range(args.num_runs):
         args.seed = init_seed + run_num
         info(f'Run {run_num} | Seed {args.seed}')
@@ -33,6 +32,7 @@ def run_stat(args: Namespace, logger: Logger = None) -> Tuple[float, float]:
         # Save each seed in an explicit seed folder so checkpoints are easy to audit.
         args.save_dir = os.path.join(save_dir, f'seed_{args.seed}')
         makedirs(args.save_dir)
+        data = get_data(path=args.data_path, args=args, logger=logger)
         model_scores = a_run_training(args,data, logger)
         all_scores.append(model_scores)
         model_path = os.path.join(args.save_dir, 'model.pt')
