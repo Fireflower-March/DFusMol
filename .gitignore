@@ -38,7 +38,7 @@ history/
 .zsh_history
 
 # Logs and runtime files
-*.log
+# *.log
 
 # Training/preprocessing outputs
 ckpt/

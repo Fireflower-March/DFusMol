@@ -12,8 +12,8 @@
         0.1,
         0.1
     ],
-    "num_runs": 20,
-    "seed": 40,
+    "num_runs": 1,
+    "seed": 59,
     "metric": "auc",
     "quiet": false,
     "log_frequency": 10,

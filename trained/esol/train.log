@@ -1,0 +1,436 @@
+INFO - 05/18/26 15:43:54 - 0:00:00 - ============ Initialized logger ============
+INFO - 05/18/26 15:43:54 - 0:00:00 - activation: ReLU
+INFO - 05/18/26 15:43:54 - 0:00:00 - batch_size: 256
+INFO - 05/18/26 15:43:54 - 0:00:00 - bias: False
+INFO - 05/18/26 15:43:54 - 0:00:00 - command: python train.py --data_path './data/esol.csv' --dataset_type regression --epochs 100 --num_runs 1 --gpu 0 --batch_size 256 --seed 55 --init_lr '1e-4' --split_type scaffold_balanced --exp_name finetune --exp_id esol --exp_id "esol"
+INFO - 05/18/26 15:43:54 - 0:00:00 - cuda: True
+INFO - 05/18/26 15:43:54 - 0:00:00 - data_path: ./data/esol.csv
+INFO - 05/18/26 15:43:54 - 0:00:00 - dataset_type: regression
+INFO - 05/18/26 15:43:54 - 0:00:00 - depth: 3
+INFO - 05/18/26 15:43:54 - 0:00:00 - dropout: 0.0
+INFO - 05/18/26 15:43:54 - 0:00:00 - dump_path: dumped
+INFO - 05/18/26 15:43:54 - 0:00:00 - encoder_name: CMPNN
+INFO - 05/18/26 15:43:54 - 0:00:00 - ensemble_size: 1
+INFO - 05/18/26 15:43:54 - 0:00:00 - epochs: 100
+INFO - 05/18/26 15:43:54 - 0:00:00 - exp_id: esol
+INFO - 05/18/26 15:43:54 - 0:00:00 - exp_name: finetune
+INFO - 05/18/26 15:43:54 - 0:00:00 - features_scaling: True
+INFO - 05/18/26 15:43:54 - 0:00:00 - ffn_hidden_size: 256
+INFO - 05/18/26 15:43:54 - 0:00:00 - ffn_num_layers: 2
+INFO - 05/18/26 15:43:54 - 0:00:00 - final_lr: 0.0001
+INFO - 05/18/26 15:43:54 - 0:00:00 - gpu: 0
+INFO - 05/18/26 15:43:54 - 0:00:00 - hidden_size: 256
+INFO - 05/18/26 15:43:54 - 0:00:00 - init_lr: 0.0001
+INFO - 05/18/26 15:43:54 - 0:00:00 - log_frequency: 10
+INFO - 05/18/26 15:43:54 - 0:00:00 - map_dict: preprocessed_molecular_esol.npy
+INFO - 05/18/26 15:43:54 - 0:00:00 - max_data_size: None
+INFO - 05/18/26 15:43:54 - 0:00:00 - max_lr: 0.001
+INFO - 05/18/26 15:43:54 - 0:00:00 - metric: rmse
+INFO - 05/18/26 15:43:54 - 0:00:00 - minimize_score: True
+INFO - 05/18/26 15:43:54 - 0:00:00 - multiclass_num_classes: 3
+INFO - 05/18/26 15:43:54 - 0:00:00 - no_cache: False
+INFO - 05/18/26 15:43:54 - 0:00:00 - num_lrs: 1
+INFO - 05/18/26 15:43:54 - 0:00:00 - num_runs: 1
+INFO - 05/18/26 15:43:54 - 0:00:00 - quiet: False
+INFO - 05/18/26 15:43:54 - 0:00:00 - save_dir: ./ckpt
+INFO - 05/18/26 15:43:54 - 0:00:00 - seed: 55
+INFO - 05/18/26 15:43:54 - 0:00:00 - show_individual_scores: False
+INFO - 05/18/26 15:43:54 - 0:00:00 - split_sizes: [0.8, 0.1, 0.1]
+INFO - 05/18/26 15:43:54 - 0:00:00 - split_type: scaffold_balanced
+INFO - 05/18/26 15:43:54 - 0:00:00 - temperature: 0.1
+INFO - 05/18/26 15:43:54 - 0:00:00 - test: False
+INFO - 05/18/26 15:43:54 - 0:00:00 - tokenizer: /home/dw/lx_project/DFusMol/preprocess/token_id.json
+INFO - 05/18/26 15:43:54 - 0:00:00 - warmup_epochs: 2.0
+INFO - 05/18/26 15:43:54 - 0:00:00 - # Git Version: 22790f6 #
+INFO - 05/18/26 15:43:54 - 0:00:00 - The experiment will be stored in dumped/0518-finetune/esol
+INFO - 05/18/26 15:43:54 - 0:00:00 - Running command: python train.py --data_path './data/esol.csv' --dataset_type regression --epochs 100 --num_runs 1 --gpu 0 --batch_size 256 --seed 55 --init_lr '1e-4' --split_type scaffold_balanced --exp_name finetune --exp_id esol
+                                     
+INFO - 05/18/26 15:43:54 - 0:00:00 - Run 0 | Seed 55
+INFO - 05/18/26 15:44:55 - 0:01:01 - Loading data
+INFO - 05/18/26 15:44:55 - 0:01:01 - Number of tasks = 1
+DEBUG - 05/18/26 15:44:55 - 0:01:01 - Splitting data with seed 55
+DEBUG - 05/18/26 15:44:55 - 0:01:01 - Total scaffolds = 269 | train scaffolds = 165 | val scaffolds = 51 | test scaffolds = 53
+DEBUG - 05/18/26 15:44:55 - 0:01:01 - Label averages per scaffold, in decreasing order of scaffold frequency,capped at 10 scaffolds and 20 labels: [(array([-2.85413386]), array([254])), (array([-1.9124858]), array([317])), (array([-2.596]), array([1])), (array([-4.33494118]), array([17])), (array([-5.241625]), array([8])), (array([-2.06]), array([1])), (array([-3.021]), array([1])), (array([-4.76]), array([1])), (array([-4.38]), array([1])), (array([-5.24]), array([1]))]
+DEBUG - 05/18/26 15:44:55 - 0:01:01 - Total size = 1,128 | train size = 902 | val size = 112 | test size = 114
+DEBUG - 05/18/26 15:44:55 - 0:01:01 - Fitting scaler
+DEBUG - 05/18/26 15:44:55 - 0:01:01 - Building model
+DEBUG - 05/18/26 15:44:55 - 0:01:01 - MoleculeModel(
+                                        (encoder_1): CMPN(
+                                          (encoder): CMPNEncoder(
+                                            (dropout_layer): Dropout(p=0.0, inplace=False)
+                                            (act_func): ReLU()
+                                            (W_i_atom): Linear(in_features=133, out_features=256, bias=False)
+                                            (W_i_bond): Linear(in_features=147, out_features=256, bias=False)
+                                            (W_project): Linear(in_features=256, out_features=256, bias=True)
+                                            (W_h_0): Linear(in_features=256, out_features=256, bias=False)
+                                            (W_h_1): Linear(in_features=256, out_features=256, bias=False)
+                                            (W_o): Linear(in_features=512, out_features=256, bias=True)
+                                            (gru): BatchGRU(
+                                              (gru): GRU(256, 256, batch_first=True, bidirectional=True)
+                                            )
+                                            (lr): Linear(in_features=768, out_features=256, bias=False)
+                                          )
+                                        )
+                                        (encoder_2): MoleculePropertyPredictionModel(
+                                          (atom_encoder): EncoderModel_atom(
+                                            (embedding): Sequential(
+                                              (0): Linear(in_features=256, out_features=256, bias=True)
+                                              (1): ReLU()
+                                            )
+                                            (global_embedding): Sequential(
+                                              (0): Linear(in_features=256, out_features=256, bias=True)
+                                              (1): ReLU()
+                                            )
+                                            (dropout): Dropout(p=0.0, inplace=False)
+                                          )
+                                          (motif_encoder): EncoderModel_motif(
+                                            (embedding): Embedding(12335, 256)
+                                            (dropout): Dropout(p=0.0, inplace=False)
+                                            (encoder_layers): ModuleList(
+                                              (0-2): 3 x EncoderLayer(
+                                                (mha1): MultiHeadAttention(
+                                                  (wq): Linear(in_features=128, out_features=128, bias=True)
+                                                  (wk): Linear(in_features=128, out_features=128, bias=True)
+                                                  (wv): Linear(in_features=128, out_features=128, bias=True)
+                                                  (dense): Linear(in_features=128, out_features=128, bias=True)
+                                                )
+                                                (mha2): MultiHeadAttention(
+                                                  (wq): Linear(in_features=128, out_features=128, bias=True)
+                                                  (wk): Linear(in_features=128, out_features=128, bias=True)
+                                                  (wv): Linear(in_features=128, out_features=128, bias=True)
+                                                  (dense): Linear(in_features=128, out_features=128, bias=True)
+                                                )
+                                                (ffn): Sequential(
+                                                  (0): Linear(in_features=256, out_features=512, bias=True)
+                                                  (1): GELU(approximate='none')
+                                                  (2): Linear(in_features=512, out_features=256, bias=True)
+                                                )
+                                                (layer_norm1): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+                                                (layer_norm2): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+                                                (dropout1): Dropout(p=0.0, inplace=False)
+                                                (dropout2): Dropout(p=0.0, inplace=False)
+                                              )
+                                            )
+                                          )
+                                          (fc1): Linear(in_features=256, out_features=256, bias=True)
+                                          (dropout1): Dropout(p=0.0, inplace=False)
+                                          (Wa): Linear(in_features=256, out_features=256, bias=True)
+                                        )
+                                        (ffn): Sequential(
+                                          (0): Dropout(p=0.0, inplace=False)
+                                          (1): Linear(in_features=256, out_features=256, bias=True)
+                                          (2): ReLU()
+                                          (3): Dropout(p=0.0, inplace=False)
+                                          (4): Linear(in_features=256, out_features=1, bias=True)
+                                        )
+                                      )
+DEBUG - 05/18/26 15:44:55 - 0:01:01 - Number of parameters = 6,061,314
+INFO - 05/18/26 15:44:57 - 0:01:03 - Epoch 0
+INFO - 05/18/26 15:45:07 - 0:01:13 - Validation rmse = 1.990697
+INFO - 05/18/26 15:45:07 - 0:01:13 - test rmse = 2.099494
+INFO - 05/18/26 15:45:07 - 0:01:13 - Epoch 1
+INFO - 05/18/26 15:45:16 - 0:01:22 - Validation rmse = 1.556022
+INFO - 05/18/26 15:45:17 - 0:01:23 - test rmse = 1.346097
+INFO - 05/18/26 15:45:17 - 0:01:23 - Epoch 2
+INFO - 05/18/26 15:45:26 - 0:01:32 - Validation rmse = 1.443059
+INFO - 05/18/26 15:45:26 - 0:01:32 - test rmse = 1.071476
+INFO - 05/18/26 15:45:26 - 0:01:32 - Epoch 3
+INFO - 05/18/26 15:45:36 - 0:01:41 - Validation rmse = 1.812232
+INFO - 05/18/26 15:45:36 - 0:01:42 - test rmse = 1.420570
+INFO - 05/18/26 15:45:36 - 0:01:42 - Epoch 4
+INFO - 05/18/26 15:45:45 - 0:01:51 - Validation rmse = 1.823854
+INFO - 05/18/26 15:45:45 - 0:01:51 - test rmse = 1.817503
+INFO - 05/18/26 15:45:45 - 0:01:51 - Epoch 5
+INFO - 05/18/26 15:45:55 - 0:02:01 - Validation rmse = 1.638897
+INFO - 05/18/26 15:45:55 - 0:02:01 - test rmse = 1.286513
+INFO - 05/18/26 15:45:55 - 0:02:01 - Epoch 6
+INFO - 05/18/26 15:46:04 - 0:02:10 - Validation rmse = 1.668605
+INFO - 05/18/26 15:46:04 - 0:02:10 - test rmse = 1.267818
+INFO - 05/18/26 15:46:04 - 0:02:10 - Epoch 7
+INFO - 05/18/26 15:46:14 - 0:02:20 - Validation rmse = 1.276826
+INFO - 05/18/26 15:46:14 - 0:02:20 - test rmse = 0.929793
+INFO - 05/18/26 15:46:14 - 0:02:20 - Epoch 8
+INFO - 05/18/26 15:46:23 - 0:02:29 - Validation rmse = 1.362536
+INFO - 05/18/26 15:46:24 - 0:02:30 - test rmse = 1.066439
+INFO - 05/18/26 15:46:24 - 0:02:30 - Epoch 9
+INFO - 05/18/26 15:46:33 - 0:02:39 - Validation rmse = 1.162008
+INFO - 05/18/26 15:46:33 - 0:02:39 - test rmse = 0.775793
+INFO - 05/18/26 15:46:33 - 0:02:39 - Epoch 10
+INFO - 05/18/26 15:46:42 - 0:02:48 - Validation rmse = 1.181770
+INFO - 05/18/26 15:46:43 - 0:02:49 - test rmse = 0.787280
+INFO - 05/18/26 15:46:43 - 0:02:49 - Epoch 11
+INFO - 05/18/26 15:46:52 - 0:02:58 - Validation rmse = 1.112054
+INFO - 05/18/26 15:46:52 - 0:02:58 - test rmse = 0.709579
+INFO - 05/18/26 15:46:52 - 0:02:58 - Epoch 12
+INFO - 05/18/26 15:47:01 - 0:03:07 - Validation rmse = 1.070194
+INFO - 05/18/26 15:47:02 - 0:03:08 - test rmse = 0.675045
+INFO - 05/18/26 15:47:02 - 0:03:08 - Epoch 13
+INFO - 05/18/26 15:47:11 - 0:03:17 - Validation rmse = 1.074250
+INFO - 05/18/26 15:47:12 - 0:03:18 - test rmse = 0.659835
+INFO - 05/18/26 15:47:12 - 0:03:18 - Epoch 14
+INFO - 05/18/26 15:47:21 - 0:03:27 - Validation rmse = 1.066305
+INFO - 05/18/26 15:47:21 - 0:03:27 - test rmse = 0.666554
+INFO - 05/18/26 15:47:21 - 0:03:27 - Epoch 15
+INFO - 05/18/26 15:47:30 - 0:03:36 - Validation rmse = 1.058272
+INFO - 05/18/26 15:47:31 - 0:03:37 - test rmse = 0.683765
+INFO - 05/18/26 15:47:31 - 0:03:37 - Epoch 16
+INFO - 05/18/26 15:47:40 - 0:03:46 - Validation rmse = 1.010567
+INFO - 05/18/26 15:47:40 - 0:03:46 - test rmse = 0.683155
+INFO - 05/18/26 15:47:40 - 0:03:46 - Epoch 17
+INFO - 05/18/26 15:47:49 - 0:03:55 - Validation rmse = 0.997169
+INFO - 05/18/26 15:47:49 - 0:03:55 - test rmse = 0.698469
+INFO - 05/18/26 15:47:49 - 0:03:55 - Epoch 18
+INFO - 05/18/26 15:47:59 - 0:04:05 - Validation rmse = 0.987529
+INFO - 05/18/26 15:47:59 - 0:04:05 - test rmse = 0.721392
+INFO - 05/18/26 15:47:59 - 0:04:05 - Epoch 19
+INFO - 05/18/26 15:48:08 - 0:04:14 - Validation rmse = 0.980390
+INFO - 05/18/26 15:48:09 - 0:04:15 - test rmse = 0.728705
+INFO - 05/18/26 15:48:09 - 0:04:15 - Epoch 20
+INFO - 05/18/26 15:48:18 - 0:04:24 - Validation rmse = 0.981826
+INFO - 05/18/26 15:48:18 - 0:04:24 - test rmse = 0.767649
+INFO - 05/18/26 15:48:18 - 0:04:24 - Epoch 21
+INFO - 05/18/26 15:48:28 - 0:04:34 - Validation rmse = 0.961504
+INFO - 05/18/26 15:48:28 - 0:04:34 - test rmse = 0.719846
+INFO - 05/18/26 15:48:28 - 0:04:34 - Epoch 22
+INFO - 05/18/26 15:48:37 - 0:04:43 - Validation rmse = 0.955383
+INFO - 05/18/26 15:48:38 - 0:04:44 - test rmse = 0.723334
+INFO - 05/18/26 15:48:38 - 0:04:44 - Epoch 23
+INFO - 05/18/26 15:48:47 - 0:04:53 - Validation rmse = 0.944915
+INFO - 05/18/26 15:48:47 - 0:04:53 - test rmse = 0.748451
+INFO - 05/18/26 15:48:47 - 0:04:53 - Epoch 24
+INFO - 05/18/26 15:48:57 - 0:05:03 - Validation rmse = 0.908541
+INFO - 05/18/26 15:48:57 - 0:05:03 - test rmse = 0.735933
+INFO - 05/18/26 15:48:57 - 0:05:03 - Epoch 25
+INFO - 05/18/26 15:49:06 - 0:05:12 - Validation rmse = 0.908482
+INFO - 05/18/26 15:49:07 - 0:05:13 - test rmse = 0.715698
+INFO - 05/18/26 15:49:07 - 0:05:13 - Epoch 26
+INFO - 05/18/26 15:49:16 - 0:05:22 - Validation rmse = 0.914221
+INFO - 05/18/26 15:49:16 - 0:05:22 - test rmse = 0.745992
+INFO - 05/18/26 15:49:16 - 0:05:22 - Epoch 27
+INFO - 05/18/26 15:49:25 - 0:05:31 - Validation rmse = 0.890308
+INFO - 05/18/26 15:49:26 - 0:05:32 - test rmse = 0.745044
+INFO - 05/18/26 15:49:26 - 0:05:32 - Epoch 28
+INFO - 05/18/26 15:49:35 - 0:05:41 - Validation rmse = 0.892361
+INFO - 05/18/26 15:49:35 - 0:05:41 - test rmse = 0.726821
+INFO - 05/18/26 15:49:35 - 0:05:41 - Epoch 29
+INFO - 05/18/26 15:49:45 - 0:05:51 - Validation rmse = 0.898411
+INFO - 05/18/26 15:49:45 - 0:05:51 - test rmse = 0.745095
+INFO - 05/18/26 15:49:45 - 0:05:51 - Epoch 30
+INFO - 05/18/26 15:49:54 - 0:06:00 - Validation rmse = 0.870774
+INFO - 05/18/26 15:49:55 - 0:06:01 - test rmse = 0.741498
+INFO - 05/18/26 15:49:55 - 0:06:01 - Epoch 31
+INFO - 05/18/26 15:50:04 - 0:06:10 - Validation rmse = 0.866017
+INFO - 05/18/26 15:50:04 - 0:06:10 - test rmse = 0.730024
+INFO - 05/18/26 15:50:04 - 0:06:10 - Epoch 32
+INFO - 05/18/26 15:50:13 - 0:06:19 - Validation rmse = 0.880948
+INFO - 05/18/26 15:50:13 - 0:06:19 - test rmse = 0.736139
+INFO - 05/18/26 15:50:13 - 0:06:19 - Epoch 33
+INFO - 05/18/26 15:50:22 - 0:06:28 - Validation rmse = 0.852383
+INFO - 05/18/26 15:50:22 - 0:06:28 - test rmse = 0.733575
+INFO - 05/18/26 15:50:22 - 0:06:28 - Epoch 34
+INFO - 05/18/26 15:50:31 - 0:06:37 - Validation rmse = 0.851228
+INFO - 05/18/26 15:50:32 - 0:06:38 - test rmse = 0.757479
+INFO - 05/18/26 15:50:32 - 0:06:38 - Epoch 35
+INFO - 05/18/26 15:50:40 - 0:06:46 - Validation rmse = 0.870780
+INFO - 05/18/26 15:50:41 - 0:06:47 - test rmse = 0.719303
+INFO - 05/18/26 15:50:41 - 0:06:47 - Epoch 36
+INFO - 05/18/26 15:50:49 - 0:06:55 - Validation rmse = 0.865396
+INFO - 05/18/26 15:50:50 - 0:06:56 - test rmse = 0.755447
+INFO - 05/18/26 15:50:50 - 0:06:56 - Epoch 37
+INFO - 05/18/26 15:50:59 - 0:07:05 - Validation rmse = 0.865071
+INFO - 05/18/26 15:50:59 - 0:07:05 - test rmse = 0.722417
+INFO - 05/18/26 15:50:59 - 0:07:05 - Epoch 38
+INFO - 05/18/26 15:51:08 - 0:07:14 - Validation rmse = 0.885471
+INFO - 05/18/26 15:51:09 - 0:07:15 - test rmse = 0.734582
+INFO - 05/18/26 15:51:09 - 0:07:15 - Epoch 39
+INFO - 05/18/26 15:51:18 - 0:07:24 - Validation rmse = 0.878830
+INFO - 05/18/26 15:51:19 - 0:07:25 - test rmse = 0.717817
+INFO - 05/18/26 15:51:19 - 0:07:25 - Epoch 40
+INFO - 05/18/26 15:51:28 - 0:07:34 - Validation rmse = 0.868942
+INFO - 05/18/26 15:51:28 - 0:07:34 - test rmse = 0.731092
+INFO - 05/18/26 15:51:28 - 0:07:34 - Epoch 41
+INFO - 05/18/26 15:51:37 - 0:07:43 - Validation rmse = 0.847832
+INFO - 05/18/26 15:51:37 - 0:07:43 - test rmse = 0.698605
+INFO - 05/18/26 15:51:37 - 0:07:43 - Epoch 42
+INFO - 05/18/26 15:51:46 - 0:07:52 - Validation rmse = 0.843245
+INFO - 05/18/26 15:51:47 - 0:07:53 - test rmse = 0.698828
+INFO - 05/18/26 15:51:47 - 0:07:53 - Epoch 43
+INFO - 05/18/26 15:51:56 - 0:08:02 - Validation rmse = 0.841812
+INFO - 05/18/26 15:51:56 - 0:08:02 - test rmse = 0.707590
+INFO - 05/18/26 15:51:56 - 0:08:02 - Epoch 44
+INFO - 05/18/26 15:52:05 - 0:08:11 - Validation rmse = 0.851617
+INFO - 05/18/26 15:52:05 - 0:08:11 - test rmse = 0.694476
+INFO - 05/18/26 15:52:05 - 0:08:11 - Epoch 45
+INFO - 05/18/26 15:52:15 - 0:08:21 - Validation rmse = 0.841775
+INFO - 05/18/26 15:52:15 - 0:08:21 - test rmse = 0.687632
+INFO - 05/18/26 15:52:15 - 0:08:21 - Epoch 46
+INFO - 05/18/26 15:52:24 - 0:08:30 - Validation rmse = 0.854920
+INFO - 05/18/26 15:52:25 - 0:08:31 - test rmse = 0.722062
+INFO - 05/18/26 15:52:25 - 0:08:31 - Epoch 47
+INFO - 05/18/26 15:52:34 - 0:08:40 - Validation rmse = 0.848254
+INFO - 05/18/26 15:52:34 - 0:08:40 - test rmse = 0.683569
+INFO - 05/18/26 15:52:34 - 0:08:40 - Epoch 48
+INFO - 05/18/26 15:52:43 - 0:08:49 - Validation rmse = 0.837006
+INFO - 05/18/26 15:52:43 - 0:08:49 - test rmse = 0.693877
+INFO - 05/18/26 15:52:43 - 0:08:49 - Epoch 49
+INFO - 05/18/26 15:52:52 - 0:08:58 - Validation rmse = 0.825774
+INFO - 05/18/26 15:52:53 - 0:08:59 - test rmse = 0.707479
+INFO - 05/18/26 15:52:53 - 0:08:59 - Epoch 50
+INFO - 05/18/26 15:53:02 - 0:09:08 - Validation rmse = 0.828879
+INFO - 05/18/26 15:53:02 - 0:09:08 - test rmse = 0.676500
+INFO - 05/18/26 15:53:02 - 0:09:08 - Epoch 51
+INFO - 05/18/26 15:53:11 - 0:09:17 - Validation rmse = 0.838167
+INFO - 05/18/26 15:53:12 - 0:09:18 - test rmse = 0.696667
+INFO - 05/18/26 15:53:12 - 0:09:18 - Epoch 52
+INFO - 05/18/26 15:53:21 - 0:09:27 - Validation rmse = 0.823192
+INFO - 05/18/26 15:53:21 - 0:09:27 - test rmse = 0.677609
+INFO - 05/18/26 15:53:21 - 0:09:27 - Epoch 53
+INFO - 05/18/26 15:53:30 - 0:09:36 - Validation rmse = 0.823214
+INFO - 05/18/26 15:53:30 - 0:09:36 - test rmse = 0.678030
+INFO - 05/18/26 15:53:30 - 0:09:36 - Epoch 54
+INFO - 05/18/26 15:53:40 - 0:09:45 - Validation rmse = 0.847112
+INFO - 05/18/26 15:53:40 - 0:09:46 - test rmse = 0.716891
+INFO - 05/18/26 15:53:40 - 0:09:46 - Epoch 55
+INFO - 05/18/26 15:53:49 - 0:09:55 - Validation rmse = 0.826285
+INFO - 05/18/26 15:53:49 - 0:09:55 - test rmse = 0.687973
+INFO - 05/18/26 15:53:49 - 0:09:55 - Epoch 56
+INFO - 05/18/26 15:53:59 - 0:10:05 - Validation rmse = 0.822630
+INFO - 05/18/26 15:53:59 - 0:10:05 - test rmse = 0.685593
+INFO - 05/18/26 15:53:59 - 0:10:05 - Epoch 57
+INFO - 05/18/26 15:54:08 - 0:10:14 - Validation rmse = 0.823711
+INFO - 05/18/26 15:54:08 - 0:10:14 - test rmse = 0.700555
+INFO - 05/18/26 15:54:08 - 0:10:14 - Epoch 58
+INFO - 05/18/26 15:54:17 - 0:10:23 - Validation rmse = 0.826104
+INFO - 05/18/26 15:54:18 - 0:10:24 - test rmse = 0.696271
+INFO - 05/18/26 15:54:18 - 0:10:24 - Epoch 59
+INFO - 05/18/26 15:54:27 - 0:10:33 - Validation rmse = 0.832813
+INFO - 05/18/26 15:54:27 - 0:10:33 - test rmse = 0.693282
+INFO - 05/18/26 15:54:27 - 0:10:33 - Epoch 60
+INFO - 05/18/26 15:54:36 - 0:10:42 - Validation rmse = 0.830094
+INFO - 05/18/26 15:54:37 - 0:10:43 - test rmse = 0.706008
+INFO - 05/18/26 15:54:37 - 0:10:43 - Epoch 61
+INFO - 05/18/26 15:54:46 - 0:10:52 - Validation rmse = 0.830834
+INFO - 05/18/26 15:54:46 - 0:10:52 - test rmse = 0.695682
+INFO - 05/18/26 15:54:46 - 0:10:52 - Epoch 62
+INFO - 05/18/26 15:54:55 - 0:11:01 - Validation rmse = 0.854483
+INFO - 05/18/26 15:54:55 - 0:11:01 - test rmse = 0.692384
+INFO - 05/18/26 15:54:55 - 0:11:01 - Epoch 63
+INFO - 05/18/26 15:55:04 - 0:11:10 - Validation rmse = 0.827981
+INFO - 05/18/26 15:55:05 - 0:11:11 - test rmse = 0.697007
+INFO - 05/18/26 15:55:05 - 0:11:11 - Epoch 64
+INFO - 05/18/26 15:55:14 - 0:11:20 - Validation rmse = 0.831364
+INFO - 05/18/26 15:55:14 - 0:11:20 - test rmse = 0.683361
+INFO - 05/18/26 15:55:14 - 0:11:20 - Epoch 65
+INFO - 05/18/26 15:55:23 - 0:11:29 - Validation rmse = 0.834798
+INFO - 05/18/26 15:55:24 - 0:11:30 - test rmse = 0.688512
+INFO - 05/18/26 15:55:24 - 0:11:30 - Epoch 66
+INFO - 05/18/26 15:55:33 - 0:11:39 - Validation rmse = 0.832910
+INFO - 05/18/26 15:55:33 - 0:11:39 - test rmse = 0.693078
+INFO - 05/18/26 15:55:33 - 0:11:39 - Epoch 67
+INFO - 05/18/26 15:55:42 - 0:11:48 - Validation rmse = 0.835443
+INFO - 05/18/26 15:55:43 - 0:11:49 - test rmse = 0.682936
+INFO - 05/18/26 15:55:43 - 0:11:49 - Epoch 68
+INFO - 05/18/26 15:55:52 - 0:11:58 - Validation rmse = 0.823047
+INFO - 05/18/26 15:55:52 - 0:11:58 - test rmse = 0.686417
+INFO - 05/18/26 15:55:52 - 0:11:58 - Epoch 69
+INFO - 05/18/26 15:56:01 - 0:12:07 - Validation rmse = 0.829012
+INFO - 05/18/26 15:56:02 - 0:12:08 - test rmse = 0.697793
+INFO - 05/18/26 15:56:02 - 0:12:08 - Epoch 70
+INFO - 05/18/26 15:56:11 - 0:12:17 - Validation rmse = 0.827568
+INFO - 05/18/26 15:56:11 - 0:12:17 - test rmse = 0.681171
+INFO - 05/18/26 15:56:11 - 0:12:17 - Epoch 71
+INFO - 05/18/26 15:56:20 - 0:12:26 - Validation rmse = 0.828408
+INFO - 05/18/26 15:56:21 - 0:12:27 - test rmse = 0.687302
+INFO - 05/18/26 15:56:21 - 0:12:27 - Epoch 72
+INFO - 05/18/26 15:56:30 - 0:12:36 - Validation rmse = 0.824337
+INFO - 05/18/26 15:56:30 - 0:12:36 - test rmse = 0.696952
+INFO - 05/18/26 15:56:30 - 0:12:36 - Epoch 73
+INFO - 05/18/26 15:56:39 - 0:12:45 - Validation rmse = 0.823935
+INFO - 05/18/26 15:56:39 - 0:12:45 - test rmse = 0.687655
+INFO - 05/18/26 15:56:39 - 0:12:45 - Epoch 74
+INFO - 05/18/26 15:56:49 - 0:12:55 - Validation rmse = 0.832379
+INFO - 05/18/26 15:56:49 - 0:12:55 - test rmse = 0.696556
+INFO - 05/18/26 15:56:49 - 0:12:55 - Epoch 75
+INFO - 05/18/26 15:56:58 - 0:13:04 - Validation rmse = 0.824750
+INFO - 05/18/26 15:56:58 - 0:13:04 - test rmse = 0.702283
+INFO - 05/18/26 15:56:58 - 0:13:04 - Epoch 76
+INFO - 05/18/26 15:57:08 - 0:13:14 - Validation rmse = 0.839453
+INFO - 05/18/26 15:57:08 - 0:13:14 - test rmse = 0.684319
+INFO - 05/18/26 15:57:08 - 0:13:14 - Epoch 77
+INFO - 05/18/26 15:57:17 - 0:13:23 - Validation rmse = 0.827432
+INFO - 05/18/26 15:57:17 - 0:13:23 - test rmse = 0.688939
+INFO - 05/18/26 15:57:17 - 0:13:23 - Epoch 78
+INFO - 05/18/26 15:57:27 - 0:13:32 - Validation rmse = 0.832028
+INFO - 05/18/26 15:57:27 - 0:13:33 - test rmse = 0.700323
+INFO - 05/18/26 15:57:27 - 0:13:33 - Epoch 79
+INFO - 05/18/26 15:57:36 - 0:13:42 - Validation rmse = 0.834279
+INFO - 05/18/26 15:57:36 - 0:13:42 - test rmse = 0.689960
+INFO - 05/18/26 15:57:36 - 0:13:42 - Epoch 80
+INFO - 05/18/26 15:57:45 - 0:13:51 - Validation rmse = 0.838733
+INFO - 05/18/26 15:57:46 - 0:13:52 - test rmse = 0.688612
+INFO - 05/18/26 15:57:46 - 0:13:52 - Epoch 81
+INFO - 05/18/26 15:57:55 - 0:14:01 - Validation rmse = 0.830391
+INFO - 05/18/26 15:57:56 - 0:14:02 - test rmse = 0.707392
+INFO - 05/18/26 15:57:56 - 0:14:02 - Epoch 82
+INFO - 05/18/26 15:58:05 - 0:14:11 - Validation rmse = 0.829462
+INFO - 05/18/26 15:58:05 - 0:14:11 - test rmse = 0.697235
+INFO - 05/18/26 15:58:05 - 0:14:11 - Epoch 83
+INFO - 05/18/26 15:58:14 - 0:14:20 - Validation rmse = 0.836277
+INFO - 05/18/26 15:58:14 - 0:14:20 - test rmse = 0.688277
+INFO - 05/18/26 15:58:14 - 0:14:20 - Epoch 84
+INFO - 05/18/26 15:58:24 - 0:14:30 - Validation rmse = 0.835176
+INFO - 05/18/26 15:58:24 - 0:14:30 - test rmse = 0.693245
+INFO - 05/18/26 15:58:24 - 0:14:30 - Epoch 85
+INFO - 05/18/26 15:58:33 - 0:14:39 - Validation rmse = 0.834569
+INFO - 05/18/26 15:58:34 - 0:14:39 - test rmse = 0.700712
+INFO - 05/18/26 15:58:34 - 0:14:39 - Epoch 86
+INFO - 05/18/26 15:58:43 - 0:14:49 - Validation rmse = 0.834458
+INFO - 05/18/26 15:58:44 - 0:14:50 - test rmse = 0.700005
+INFO - 05/18/26 15:58:44 - 0:14:50 - Epoch 87
+INFO - 05/18/26 15:58:53 - 0:14:59 - Validation rmse = 0.839657
+INFO - 05/18/26 15:58:53 - 0:14:59 - test rmse = 0.695830
+INFO - 05/18/26 15:58:53 - 0:14:59 - Epoch 88
+INFO - 05/18/26 15:59:02 - 0:15:08 - Validation rmse = 0.836296
+INFO - 05/18/26 15:59:03 - 0:15:09 - test rmse = 0.696740
+INFO - 05/18/26 15:59:03 - 0:15:09 - Epoch 89
+INFO - 05/18/26 15:59:12 - 0:15:18 - Validation rmse = 0.835776
+INFO - 05/18/26 15:59:12 - 0:15:18 - test rmse = 0.700765
+INFO - 05/18/26 15:59:12 - 0:15:18 - Epoch 90
+INFO - 05/18/26 15:59:21 - 0:15:27 - Validation rmse = 0.836157
+INFO - 05/18/26 15:59:22 - 0:15:28 - test rmse = 0.700579
+INFO - 05/18/26 15:59:22 - 0:15:28 - Epoch 91
+INFO - 05/18/26 15:59:31 - 0:15:37 - Validation rmse = 0.834548
+INFO - 05/18/26 15:59:31 - 0:15:37 - test rmse = 0.695264
+INFO - 05/18/26 15:59:31 - 0:15:37 - Epoch 92
+INFO - 05/18/26 15:59:40 - 0:15:46 - Validation rmse = 0.835918
+INFO - 05/18/26 15:59:41 - 0:15:47 - test rmse = 0.692675
+INFO - 05/18/26 15:59:41 - 0:15:47 - Epoch 93
+INFO - 05/18/26 15:59:50 - 0:15:56 - Validation rmse = 0.834345
+INFO - 05/18/26 15:59:50 - 0:15:56 - test rmse = 0.699061
+INFO - 05/18/26 15:59:50 - 0:15:56 - Epoch 94
+INFO - 05/18/26 15:59:59 - 0:16:05 - Validation rmse = 0.834776
+INFO - 05/18/26 15:59:59 - 0:16:05 - test rmse = 0.696574
+INFO - 05/18/26 15:59:59 - 0:16:05 - Epoch 95
+INFO - 05/18/26 16:00:09 - 0:16:15 - Validation rmse = 0.836066
+INFO - 05/18/26 16:00:09 - 0:16:15 - test rmse = 0.699907
+INFO - 05/18/26 16:00:09 - 0:16:15 - Epoch 96
+INFO - 05/18/26 16:00:18 - 0:16:24 - Validation rmse = 0.840810
+INFO - 05/18/26 16:00:19 - 0:16:25 - test rmse = 0.702240
+INFO - 05/18/26 16:00:19 - 0:16:25 - Epoch 97
+INFO - 05/18/26 16:00:28 - 0:16:34 - Validation rmse = 0.838779
+INFO - 05/18/26 16:00:28 - 0:16:34 - test rmse = 0.703195
+INFO - 05/18/26 16:00:28 - 0:16:34 - Epoch 98
+INFO - 05/18/26 16:00:37 - 0:16:43 - Validation rmse = 0.839228
+INFO - 05/18/26 16:00:38 - 0:16:44 - test rmse = 0.700482
+INFO - 05/18/26 16:00:38 - 0:16:44 - Epoch 99
+INFO - 05/18/26 16:00:47 - 0:16:53 - Validation rmse = 0.844442
+INFO - 05/18/26 16:00:47 - 0:16:53 - test rmse = 0.698713
+INFO - 05/18/26 16:00:47 - 0:16:53 - Model best validation rmse = 0.822630 on epoch 56
+DEBUG - 05/18/26 16:00:47 - 0:16:53 - Moving model to cuda
+INFO - 05/18/26 16:00:48 - 0:16:54 - Model test rmse = 0.685593
+INFO - 05/18/26 16:00:48 - 0:16:54 - Run 0 checkpoint: dumped/0518-finetune/esol/seed_55/model.pt
+INFO - 05/18/26 16:00:48 - 0:16:54 - Saved seed summary: dumped/0518-finetune/esol/seed_results.json
+INFO - 05/18/26 16:00:48 - 0:16:54 - 1-time runs
+INFO - 05/18/26 16:00:48 - 0:16:54 - Seed 55 ==> test rmse = 0.685593
+INFO - 05/18/26 16:00:48 - 0:16:54 - Best seed by test rmse: 55 | score=0.685593 | model=dumped/0518-finetune/esol/seed_55/model.pt
+INFO - 05/18/26 16:00:48 - 0:16:54 - Overall test rmse = 0.685593 +/- 0.000000

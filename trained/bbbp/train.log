@@ -1,0 +1,438 @@
+INFO - 05/18/26 14:54:33 - 0:00:00 - ============ Initialized logger ============
+INFO - 05/18/26 14:54:33 - 0:00:00 - activation: ReLU
+INFO - 05/18/26 14:54:33 - 0:00:00 - batch_size: 256
+INFO - 05/18/26 14:54:33 - 0:00:00 - bias: False
+INFO - 05/18/26 14:54:33 - 0:00:00 - command: python train.py --data_path './data/bbbp.csv' --dataset_type classification --epochs 100 --num_runs 1 --gpu 0 --batch_size 256 --seed 59 --init_lr '1e-4' --split_type scaffold_balanced --exp_name finetune --exp_id bbbp --exp_id "bbbp"
+INFO - 05/18/26 14:54:33 - 0:00:00 - cuda: True
+INFO - 05/18/26 14:54:33 - 0:00:00 - data_path: ./data/bbbp.csv
+INFO - 05/18/26 14:54:33 - 0:00:00 - dataset_type: classification
+INFO - 05/18/26 14:54:33 - 0:00:00 - depth: 3
+INFO - 05/18/26 14:54:33 - 0:00:00 - dropout: 0.0
+INFO - 05/18/26 14:54:33 - 0:00:00 - dump_path: dumped
+INFO - 05/18/26 14:54:33 - 0:00:00 - encoder_name: CMPNN
+INFO - 05/18/26 14:54:33 - 0:00:00 - ensemble_size: 1
+INFO - 05/18/26 14:54:33 - 0:00:00 - epochs: 100
+INFO - 05/18/26 14:54:33 - 0:00:00 - exp_id: bbbp
+INFO - 05/18/26 14:54:33 - 0:00:00 - exp_name: finetune
+INFO - 05/18/26 14:54:33 - 0:00:00 - features_scaling: True
+INFO - 05/18/26 14:54:33 - 0:00:00 - ffn_hidden_size: 256
+INFO - 05/18/26 14:54:33 - 0:00:00 - ffn_num_layers: 2
+INFO - 05/18/26 14:54:33 - 0:00:00 - final_lr: 0.0001
+INFO - 05/18/26 14:54:33 - 0:00:00 - gpu: 0
+INFO - 05/18/26 14:54:33 - 0:00:00 - hidden_size: 256
+INFO - 05/18/26 14:54:33 - 0:00:00 - init_lr: 0.0001
+INFO - 05/18/26 14:54:33 - 0:00:00 - log_frequency: 10
+INFO - 05/18/26 14:54:33 - 0:00:00 - map_dict: preprocessed_molecular_bbbp.npy
+INFO - 05/18/26 14:54:33 - 0:00:00 - max_data_size: None
+INFO - 05/18/26 14:54:33 - 0:00:00 - max_lr: 0.001
+INFO - 05/18/26 14:54:33 - 0:00:00 - metric: auc
+INFO - 05/18/26 14:54:33 - 0:00:00 - minimize_score: False
+INFO - 05/18/26 14:54:33 - 0:00:00 - multiclass_num_classes: 3
+INFO - 05/18/26 14:54:33 - 0:00:00 - no_cache: False
+INFO - 05/18/26 14:54:33 - 0:00:00 - num_lrs: 1
+INFO - 05/18/26 14:54:33 - 0:00:00 - num_runs: 1
+INFO - 05/18/26 14:54:33 - 0:00:00 - quiet: False
+INFO - 05/18/26 14:54:33 - 0:00:00 - save_dir: ./ckpt
+INFO - 05/18/26 14:54:33 - 0:00:00 - seed: 59
+INFO - 05/18/26 14:54:33 - 0:00:00 - show_individual_scores: False
+INFO - 05/18/26 14:54:33 - 0:00:00 - split_sizes: [0.8, 0.1, 0.1]
+INFO - 05/18/26 14:54:33 - 0:00:00 - split_type: scaffold_balanced
+INFO - 05/18/26 14:54:33 - 0:00:00 - temperature: 0.1
+INFO - 05/18/26 14:54:33 - 0:00:00 - test: False
+INFO - 05/18/26 14:54:33 - 0:00:00 - tokenizer: /home/dw/lx_project/DFusMol/preprocess/token_id.json
+INFO - 05/18/26 14:54:33 - 0:00:00 - warmup_epochs: 2.0
+INFO - 05/18/26 14:54:33 - 0:00:00 - # Git Version: 22790f6 #
+INFO - 05/18/26 14:54:33 - 0:00:00 - The experiment will be stored in dumped/0518-finetune/bbbp
+INFO - 05/18/26 14:54:33 - 0:00:00 - Running command: python train.py --data_path './data/bbbp.csv' --dataset_type classification --epochs 100 --num_runs 1 --gpu 0 --batch_size 256 --seed 59 --init_lr '1e-4' --split_type scaffold_balanced --exp_name finetune --exp_id bbbp
+                                     
+INFO - 05/18/26 14:54:33 - 0:00:00 - Run 0 | Seed 59
+INFO - 05/18/26 14:58:38 - 0:04:05 - Loading data
+INFO - 05/18/26 14:58:38 - 0:04:05 - Number of tasks = 1
+DEBUG - 05/18/26 14:58:38 - 0:04:05 - Splitting data with seed 59
+DEBUG - 05/18/26 14:58:39 - 0:04:06 - Total scaffolds = 1,025 | train scaffolds = 825 | val scaffolds = 81 | test scaffolds = 119
+DEBUG - 05/18/26 14:58:39 - 0:04:06 - Label averages per scaffold, in decreasing order of scaffold frequency,capped at 10 scaffolds and 20 labels: [(array([0.72992701]), array([137])), (array([1.]), array([1])), (array([1.]), array([1])), (array([1.]), array([1])), (array([1.]), array([1])), (array([0.8]), array([5])), (array([1.]), array([1])), (array([1.]), array([1])), (array([1.]), array([1])), (array([1.]), array([1]))]
+DEBUG - 05/18/26 14:58:39 - 0:04:06 - Class sizes
+DEBUG - 05/18/26 14:58:39 - 0:04:06 - p_np 0: 23.49%, 1: 76.51%
+DEBUG - 05/18/26 14:58:39 - 0:04:06 - Total size = 2,039 | train size = 1,631 | val size = 203 | test size = 205
+DEBUG - 05/18/26 14:58:39 - 0:04:06 - Building model
+DEBUG - 05/18/26 14:58:39 - 0:04:06 - MoleculeModel(
+                                        (sigmoid): Sigmoid()
+                                        (encoder_1): CMPN(
+                                          (encoder): CMPNEncoder(
+                                            (dropout_layer): Dropout(p=0.0, inplace=False)
+                                            (act_func): ReLU()
+                                            (W_i_atom): Linear(in_features=133, out_features=256, bias=False)
+                                            (W_i_bond): Linear(in_features=147, out_features=256, bias=False)
+                                            (W_project): Linear(in_features=256, out_features=256, bias=True)
+                                            (W_h_0): Linear(in_features=256, out_features=256, bias=False)
+                                            (W_h_1): Linear(in_features=256, out_features=256, bias=False)
+                                            (W_o): Linear(in_features=512, out_features=256, bias=True)
+                                            (gru): BatchGRU(
+                                              (gru): GRU(256, 256, batch_first=True, bidirectional=True)
+                                            )
+                                            (lr): Linear(in_features=768, out_features=256, bias=False)
+                                          )
+                                        )
+                                        (encoder_2): MoleculePropertyPredictionModel(
+                                          (atom_encoder): EncoderModel_atom(
+                                            (embedding): Sequential(
+                                              (0): Linear(in_features=256, out_features=256, bias=True)
+                                              (1): ReLU()
+                                            )
+                                            (global_embedding): Sequential(
+                                              (0): Linear(in_features=256, out_features=256, bias=True)
+                                              (1): ReLU()
+                                            )
+                                            (dropout): Dropout(p=0.0, inplace=False)
+                                          )
+                                          (motif_encoder): EncoderModel_motif(
+                                            (embedding): Embedding(12335, 256)
+                                            (dropout): Dropout(p=0.0, inplace=False)
+                                            (encoder_layers): ModuleList(
+                                              (0-2): 3 x EncoderLayer(
+                                                (mha1): MultiHeadAttention(
+                                                  (wq): Linear(in_features=128, out_features=128, bias=True)
+                                                  (wk): Linear(in_features=128, out_features=128, bias=True)
+                                                  (wv): Linear(in_features=128, out_features=128, bias=True)
+                                                  (dense): Linear(in_features=128, out_features=128, bias=True)
+                                                )
+                                                (mha2): MultiHeadAttention(
+                                                  (wq): Linear(in_features=128, out_features=128, bias=True)
+                                                  (wk): Linear(in_features=128, out_features=128, bias=True)
+                                                  (wv): Linear(in_features=128, out_features=128, bias=True)
+                                                  (dense): Linear(in_features=128, out_features=128, bias=True)
+                                                )
+                                                (ffn): Sequential(
+                                                  (0): Linear(in_features=256, out_features=512, bias=True)
+                                                  (1): GELU(approximate='none')
+                                                  (2): Linear(in_features=512, out_features=256, bias=True)
+                                                )
+                                                (layer_norm1): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+                                                (layer_norm2): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+                                                (dropout1): Dropout(p=0.0, inplace=False)
+                                                (dropout2): Dropout(p=0.0, inplace=False)
+                                              )
+                                            )
+                                          )
+                                          (fc1): Linear(in_features=256, out_features=256, bias=True)
+                                          (dropout1): Dropout(p=0.0, inplace=False)
+                                          (Wa): Linear(in_features=256, out_features=256, bias=True)
+                                        )
+                                        (ffn): Sequential(
+                                          (0): Dropout(p=0.0, inplace=False)
+                                          (1): Linear(in_features=256, out_features=256, bias=True)
+                                          (2): ReLU()
+                                          (3): Dropout(p=0.0, inplace=False)
+                                          (4): Linear(in_features=256, out_features=1, bias=True)
+                                        )
+                                      )
+DEBUG - 05/18/26 14:58:39 - 0:04:06 - Number of parameters = 6,061,314
+INFO - 05/18/26 14:58:40 - 0:04:07 - Epoch 0
+INFO - 05/18/26 14:59:03 - 0:04:30 - Validation auc = 0.622353
+INFO - 05/18/26 14:59:04 - 0:04:31 - test auc = 0.790900
+INFO - 05/18/26 14:59:04 - 0:04:31 - Epoch 1
+INFO - 05/18/26 14:59:27 - 0:04:54 - Validation auc = 0.568105
+INFO - 05/18/26 14:59:27 - 0:04:54 - test auc = 0.891096
+INFO - 05/18/26 14:59:27 - 0:04:54 - Epoch 2
+INFO - 05/18/26 14:59:50 - 0:05:17 - Validation auc = 0.848105
+INFO - 05/18/26 14:59:50 - 0:05:17 - test auc = 0.911209
+INFO - 05/18/26 14:59:51 - 0:05:18 - Epoch 3
+INFO - 05/18/26 15:00:13 - 0:05:40 - Validation auc = 0.906536
+INFO - 05/18/26 15:00:14 - 0:05:41 - test auc = 0.931445
+INFO - 05/18/26 15:00:14 - 0:05:41 - Epoch 4
+INFO - 05/18/26 15:00:36 - 0:06:03 - Validation auc = 0.908366
+INFO - 05/18/26 15:00:37 - 0:06:04 - test auc = 0.947878
+INFO - 05/18/26 15:00:37 - 0:06:04 - Epoch 5
+INFO - 05/18/26 15:00:59 - 0:06:26 - Validation auc = 0.914771
+INFO - 05/18/26 15:00:59 - 0:06:26 - test auc = 0.952416
+INFO - 05/18/26 15:00:59 - 0:06:26 - Epoch 6
+INFO - 05/18/26 15:01:21 - 0:06:48 - Validation auc = 0.928366
+INFO - 05/18/26 15:01:22 - 0:06:49 - test auc = 0.949227
+INFO - 05/18/26 15:01:22 - 0:06:49 - Epoch 7
+INFO - 05/18/26 15:01:44 - 0:07:11 - Validation auc = 0.931373
+INFO - 05/18/26 15:01:45 - 0:07:12 - test auc = 0.957935
+INFO - 05/18/26 15:01:45 - 0:07:12 - Epoch 8
+INFO - 05/18/26 15:02:07 - 0:07:34 - Validation auc = 0.924575
+INFO - 05/18/26 15:02:08 - 0:07:35 - test auc = 0.964435
+INFO - 05/18/26 15:02:08 - 0:07:35 - Epoch 9
+INFO - 05/18/26 15:02:30 - 0:07:57 - Validation auc = 0.930327
+INFO - 05/18/26 15:02:31 - 0:07:58 - test auc = 0.965293
+INFO - 05/18/26 15:02:31 - 0:07:58 - Epoch 10
+INFO - 05/18/26 15:02:53 - 0:08:20 - Validation auc = 0.938039
+INFO - 05/18/26 15:02:53 - 0:08:20 - test auc = 0.961859
+INFO - 05/18/26 15:02:54 - 0:08:20 - Epoch 11
+INFO - 05/18/26 15:03:16 - 0:08:43 - Validation auc = 0.935817
+INFO - 05/18/26 15:03:16 - 0:08:43 - test auc = 0.968236
+INFO - 05/18/26 15:03:16 - 0:08:43 - Epoch 12
+INFO - 05/18/26 15:03:39 - 0:09:06 - Validation auc = 0.940000
+INFO - 05/18/26 15:03:39 - 0:09:06 - test auc = 0.970567
+INFO - 05/18/26 15:03:40 - 0:09:07 - Epoch 13
+INFO - 05/18/26 15:04:02 - 0:09:29 - Validation auc = 0.929020
+INFO - 05/18/26 15:04:03 - 0:09:30 - test auc = 0.966642
+INFO - 05/18/26 15:04:03 - 0:09:30 - Epoch 14
+INFO - 05/18/26 15:04:25 - 0:09:52 - Validation auc = 0.929150
+INFO - 05/18/26 15:04:26 - 0:09:53 - test auc = 0.954501
+INFO - 05/18/26 15:04:26 - 0:09:53 - Epoch 15
+INFO - 05/18/26 15:04:48 - 0:10:15 - Validation auc = 0.937908
+INFO - 05/18/26 15:04:49 - 0:10:16 - test auc = 0.969585
+INFO - 05/18/26 15:04:49 - 0:10:16 - Epoch 16
+INFO - 05/18/26 15:05:11 - 0:10:38 - Validation auc = 0.939739
+INFO - 05/18/26 15:05:12 - 0:10:39 - test auc = 0.970076
+INFO - 05/18/26 15:05:12 - 0:10:39 - Epoch 17
+INFO - 05/18/26 15:05:34 - 0:11:01 - Validation auc = 0.942614
+INFO - 05/18/26 15:05:35 - 0:11:02 - test auc = 0.965906
+INFO - 05/18/26 15:05:35 - 0:11:02 - Epoch 18
+INFO - 05/18/26 15:05:58 - 0:11:25 - Validation auc = 0.937320
+INFO - 05/18/26 15:05:58 - 0:11:25 - test auc = 0.962350
+INFO - 05/18/26 15:05:58 - 0:11:25 - Epoch 19
+INFO - 05/18/26 15:06:21 - 0:11:48 - Validation auc = 0.933660
+INFO - 05/18/26 15:06:22 - 0:11:49 - test auc = 0.956095
+INFO - 05/18/26 15:06:22 - 0:11:49 - Epoch 20
+INFO - 05/18/26 15:06:44 - 0:12:11 - Validation auc = 0.915294
+INFO - 05/18/26 15:06:44 - 0:12:11 - test auc = 0.951680
+INFO - 05/18/26 15:06:44 - 0:12:11 - Epoch 21
+INFO - 05/18/26 15:07:07 - 0:12:34 - Validation auc = 0.931307
+INFO - 05/18/26 15:07:08 - 0:12:35 - test auc = 0.961001
+INFO - 05/18/26 15:07:08 - 0:12:35 - Epoch 22
+INFO - 05/18/26 15:07:30 - 0:12:57 - Validation auc = 0.927712
+INFO - 05/18/26 15:07:31 - 0:12:58 - test auc = 0.952907
+INFO - 05/18/26 15:07:31 - 0:12:58 - Epoch 23
+INFO - 05/18/26 15:07:54 - 0:13:21 - Validation auc = 0.924118
+INFO - 05/18/26 15:07:54 - 0:13:21 - test auc = 0.947510
+INFO - 05/18/26 15:07:54 - 0:13:21 - Epoch 24
+INFO - 05/18/26 15:08:17 - 0:13:44 - Validation auc = 0.921961
+INFO - 05/18/26 15:08:18 - 0:13:45 - test auc = 0.960449
+INFO - 05/18/26 15:08:18 - 0:13:45 - Epoch 25
+INFO - 05/18/26 15:08:40 - 0:14:07 - Validation auc = 0.924444
+INFO - 05/18/26 15:08:41 - 0:14:08 - test auc = 0.951312
+INFO - 05/18/26 15:08:41 - 0:14:08 - Epoch 26
+INFO - 05/18/26 15:09:03 - 0:14:30 - Validation auc = 0.917843
+INFO - 05/18/26 15:09:04 - 0:14:31 - test auc = 0.945303
+INFO - 05/18/26 15:09:04 - 0:14:31 - Epoch 27
+INFO - 05/18/26 15:09:27 - 0:14:54 - Validation auc = 0.914902
+INFO - 05/18/26 15:09:27 - 0:14:54 - test auc = 0.950331
+INFO - 05/18/26 15:09:27 - 0:14:54 - Epoch 28
+INFO - 05/18/26 15:09:50 - 0:15:17 - Validation auc = 0.904183
+INFO - 05/18/26 15:09:51 - 0:15:18 - test auc = 0.944690
+INFO - 05/18/26 15:09:51 - 0:15:18 - Epoch 29
+INFO - 05/18/26 15:10:14 - 0:15:40 - Validation auc = 0.908170
+INFO - 05/18/26 15:10:14 - 0:15:41 - test auc = 0.939662
+INFO - 05/18/26 15:10:14 - 0:15:41 - Epoch 30
+INFO - 05/18/26 15:10:37 - 0:16:04 - Validation auc = 0.912810
+INFO - 05/18/26 15:10:38 - 0:16:05 - test auc = 0.949902
+INFO - 05/18/26 15:10:38 - 0:16:05 - Epoch 31
+INFO - 05/18/26 15:11:00 - 0:16:27 - Validation auc = 0.901569
+INFO - 05/18/26 15:11:00 - 0:16:27 - test auc = 0.938558
+INFO - 05/18/26 15:11:00 - 0:16:27 - Epoch 32
+INFO - 05/18/26 15:11:23 - 0:16:50 - Validation auc = 0.936275
+INFO - 05/18/26 15:11:24 - 0:16:51 - test auc = 0.955727
+INFO - 05/18/26 15:11:24 - 0:16:51 - Epoch 33
+INFO - 05/18/26 15:11:46 - 0:17:13 - Validation auc = 0.927843
+INFO - 05/18/26 15:11:47 - 0:17:14 - test auc = 0.973755
+INFO - 05/18/26 15:11:47 - 0:17:14 - Epoch 34
+INFO - 05/18/26 15:12:09 - 0:17:36 - Validation auc = 0.936601
+INFO - 05/18/26 15:12:10 - 0:17:37 - test auc = 0.963331
+INFO - 05/18/26 15:12:10 - 0:17:37 - Epoch 35
+INFO - 05/18/26 15:12:32 - 0:17:59 - Validation auc = 0.927386
+INFO - 05/18/26 15:12:33 - 0:18:00 - test auc = 0.959345
+INFO - 05/18/26 15:12:33 - 0:18:00 - Epoch 36
+INFO - 05/18/26 15:12:55 - 0:18:22 - Validation auc = 0.923791
+INFO - 05/18/26 15:12:56 - 0:18:23 - test auc = 0.957935
+INFO - 05/18/26 15:12:56 - 0:18:23 - Epoch 37
+INFO - 05/18/26 15:13:18 - 0:18:45 - Validation auc = 0.917059
+INFO - 05/18/26 15:13:19 - 0:18:46 - test auc = 0.958057
+INFO - 05/18/26 15:13:19 - 0:18:46 - Epoch 38
+INFO - 05/18/26 15:13:41 - 0:19:08 - Validation auc = 0.908497
+INFO - 05/18/26 15:13:42 - 0:19:09 - test auc = 0.953642
+INFO - 05/18/26 15:13:42 - 0:19:09 - Epoch 39
+INFO - 05/18/26 15:14:04 - 0:19:31 - Validation auc = 0.910065
+INFO - 05/18/26 15:14:05 - 0:19:32 - test auc = 0.950331
+INFO - 05/18/26 15:14:05 - 0:19:32 - Epoch 40
+INFO - 05/18/26 15:14:27 - 0:19:54 - Validation auc = 0.910392
+INFO - 05/18/26 15:14:28 - 0:19:55 - test auc = 0.949350
+INFO - 05/18/26 15:14:28 - 0:19:55 - Epoch 41
+INFO - 05/18/26 15:14:50 - 0:20:17 - Validation auc = 0.906863
+INFO - 05/18/26 15:14:51 - 0:20:18 - test auc = 0.944444
+INFO - 05/18/26 15:14:51 - 0:20:18 - Epoch 42
+INFO - 05/18/26 15:15:14 - 0:20:41 - Validation auc = 0.910196
+INFO - 05/18/26 15:15:14 - 0:20:41 - test auc = 0.944383
+INFO - 05/18/26 15:15:14 - 0:20:41 - Epoch 43
+INFO - 05/18/26 15:15:37 - 0:21:04 - Validation auc = 0.911765
+INFO - 05/18/26 15:15:38 - 0:21:05 - test auc = 0.936902
+INFO - 05/18/26 15:15:38 - 0:21:05 - Epoch 44
+INFO - 05/18/26 15:16:00 - 0:21:27 - Validation auc = 0.909804
+INFO - 05/18/26 15:16:01 - 0:21:28 - test auc = 0.927275
+INFO - 05/18/26 15:16:01 - 0:21:28 - Epoch 45
+INFO - 05/18/26 15:16:23 - 0:21:50 - Validation auc = 0.909673
+INFO - 05/18/26 15:16:24 - 0:21:51 - test auc = 0.929973
+INFO - 05/18/26 15:16:24 - 0:21:51 - Epoch 46
+INFO - 05/18/26 15:16:46 - 0:22:13 - Validation auc = 0.911176
+INFO - 05/18/26 15:16:47 - 0:22:14 - test auc = 0.934572
+INFO - 05/18/26 15:16:47 - 0:22:14 - Epoch 47
+INFO - 05/18/26 15:17:09 - 0:22:36 - Validation auc = 0.911373
+INFO - 05/18/26 15:17:10 - 0:22:37 - test auc = 0.937086
+INFO - 05/18/26 15:17:10 - 0:22:37 - Epoch 48
+INFO - 05/18/26 15:17:32 - 0:22:59 - Validation auc = 0.907712
+INFO - 05/18/26 15:17:33 - 0:23:00 - test auc = 0.927888
+INFO - 05/18/26 15:17:33 - 0:23:00 - Epoch 49
+INFO - 05/18/26 15:17:55 - 0:23:22 - Validation auc = 0.908693
+INFO - 05/18/26 15:17:55 - 0:23:22 - test auc = 0.932058
+INFO - 05/18/26 15:17:55 - 0:23:22 - Epoch 50
+INFO - 05/18/26 15:18:17 - 0:23:44 - Validation auc = 0.907778
+INFO - 05/18/26 15:18:18 - 0:23:45 - test auc = 0.927152
+INFO - 05/18/26 15:18:18 - 0:23:45 - Epoch 51
+INFO - 05/18/26 15:18:40 - 0:24:07 - Validation auc = 0.910261
+INFO - 05/18/26 15:18:41 - 0:24:08 - test auc = 0.923964
+INFO - 05/18/26 15:18:41 - 0:24:08 - Epoch 52
+INFO - 05/18/26 15:19:03 - 0:24:30 - Validation auc = 0.908693
+INFO - 05/18/26 15:19:04 - 0:24:31 - test auc = 0.923412
+INFO - 05/18/26 15:19:04 - 0:24:31 - Epoch 53
+INFO - 05/18/26 15:19:26 - 0:24:53 - Validation auc = 0.911438
+INFO - 05/18/26 15:19:26 - 0:24:53 - test auc = 0.926478
+INFO - 05/18/26 15:19:26 - 0:24:53 - Epoch 54
+INFO - 05/18/26 15:19:48 - 0:25:15 - Validation auc = 0.910784
+INFO - 05/18/26 15:19:49 - 0:25:16 - test auc = 0.919978
+INFO - 05/18/26 15:19:49 - 0:25:16 - Epoch 55
+INFO - 05/18/26 15:20:12 - 0:25:39 - Validation auc = 0.907908
+INFO - 05/18/26 15:20:12 - 0:25:39 - test auc = 0.918568
+INFO - 05/18/26 15:20:12 - 0:25:39 - Epoch 56
+INFO - 05/18/26 15:20:34 - 0:26:01 - Validation auc = 0.910458
+INFO - 05/18/26 15:20:35 - 0:26:02 - test auc = 0.914520
+INFO - 05/18/26 15:20:35 - 0:26:02 - Epoch 57
+INFO - 05/18/26 15:20:58 - 0:26:25 - Validation auc = 0.914444
+INFO - 05/18/26 15:20:58 - 0:26:25 - test auc = 0.922369
+INFO - 05/18/26 15:20:58 - 0:26:25 - Epoch 58
+INFO - 05/18/26 15:21:22 - 0:26:49 - Validation auc = 0.905752
+INFO - 05/18/26 15:21:23 - 0:26:50 - test auc = 0.917586
+INFO - 05/18/26 15:21:23 - 0:26:50 - Epoch 59
+INFO - 05/18/26 15:21:46 - 0:27:13 - Validation auc = 0.907516
+INFO - 05/18/26 15:21:47 - 0:27:14 - test auc = 0.919426
+INFO - 05/18/26 15:21:47 - 0:27:14 - Epoch 60
+INFO - 05/18/26 15:22:11 - 0:27:38 - Validation auc = 0.905359
+INFO - 05/18/26 15:22:12 - 0:27:39 - test auc = 0.932671
+INFO - 05/18/26 15:22:12 - 0:27:39 - Epoch 61
+INFO - 05/18/26 15:22:34 - 0:28:01 - Validation auc = 0.905294
+INFO - 05/18/26 15:22:35 - 0:28:02 - test auc = 0.905568
+INFO - 05/18/26 15:22:35 - 0:28:02 - Epoch 62
+INFO - 05/18/26 15:22:58 - 0:28:25 - Validation auc = 0.910980
+INFO - 05/18/26 15:22:59 - 0:28:26 - test auc = 0.937945
+INFO - 05/18/26 15:22:59 - 0:28:26 - Epoch 63
+INFO - 05/18/26 15:23:22 - 0:28:49 - Validation auc = 0.908824
+INFO - 05/18/26 15:23:23 - 0:28:50 - test auc = 0.938190
+INFO - 05/18/26 15:23:23 - 0:28:50 - Epoch 64
+INFO - 05/18/26 15:23:46 - 0:29:13 - Validation auc = 0.891307
+INFO - 05/18/26 15:23:47 - 0:29:14 - test auc = 0.928440
+INFO - 05/18/26 15:23:47 - 0:29:14 - Epoch 65
+INFO - 05/18/26 15:24:10 - 0:29:37 - Validation auc = 0.913399
+INFO - 05/18/26 15:24:11 - 0:29:38 - test auc = 0.944935
+INFO - 05/18/26 15:24:11 - 0:29:38 - Epoch 66
+INFO - 05/18/26 15:24:34 - 0:30:00 - Validation auc = 0.911307
+INFO - 05/18/26 15:24:34 - 0:30:01 - test auc = 0.947081
+INFO - 05/18/26 15:24:34 - 0:30:01 - Epoch 67
+INFO - 05/18/26 15:24:57 - 0:30:24 - Validation auc = 0.912614
+INFO - 05/18/26 15:24:58 - 0:30:25 - test auc = 0.941256
+INFO - 05/18/26 15:24:58 - 0:30:25 - Epoch 68
+INFO - 05/18/26 15:25:21 - 0:30:48 - Validation auc = 0.913791
+INFO - 05/18/26 15:25:23 - 0:30:50 - test auc = 0.938067
+INFO - 05/18/26 15:25:23 - 0:30:50 - Epoch 69
+INFO - 05/18/26 15:25:46 - 0:31:13 - Validation auc = 0.913987
+INFO - 05/18/26 15:25:47 - 0:31:14 - test auc = 0.936841
+INFO - 05/18/26 15:25:47 - 0:31:14 - Epoch 70
+INFO - 05/18/26 15:26:10 - 0:31:37 - Validation auc = 0.914510
+INFO - 05/18/26 15:26:11 - 0:31:38 - test auc = 0.936228
+INFO - 05/18/26 15:26:11 - 0:31:38 - Epoch 71
+INFO - 05/18/26 15:26:34 - 0:32:01 - Validation auc = 0.913791
+INFO - 05/18/26 15:26:35 - 0:32:02 - test auc = 0.935982
+INFO - 05/18/26 15:26:35 - 0:32:02 - Epoch 72
+INFO - 05/18/26 15:26:58 - 0:32:25 - Validation auc = 0.911569
+INFO - 05/18/26 15:26:59 - 0:32:26 - test auc = 0.935798
+INFO - 05/18/26 15:26:59 - 0:32:26 - Epoch 73
+INFO - 05/18/26 15:27:22 - 0:32:49 - Validation auc = 0.915621
+INFO - 05/18/26 15:27:23 - 0:32:50 - test auc = 0.936902
+INFO - 05/18/26 15:27:23 - 0:32:50 - Epoch 74
+INFO - 05/18/26 15:27:46 - 0:33:13 - Validation auc = 0.917843
+INFO - 05/18/26 15:27:47 - 0:33:14 - test auc = 0.937699
+INFO - 05/18/26 15:27:47 - 0:33:14 - Epoch 75
+INFO - 05/18/26 15:28:10 - 0:33:37 - Validation auc = 0.917386
+INFO - 05/18/26 15:28:11 - 0:33:38 - test auc = 0.937761
+INFO - 05/18/26 15:28:11 - 0:33:38 - Epoch 76
+INFO - 05/18/26 15:28:34 - 0:34:01 - Validation auc = 0.917124
+INFO - 05/18/26 15:28:35 - 0:34:02 - test auc = 0.937209
+INFO - 05/18/26 15:28:35 - 0:34:02 - Epoch 77
+INFO - 05/18/26 15:28:58 - 0:34:25 - Validation auc = 0.917190
+INFO - 05/18/26 15:28:59 - 0:34:26 - test auc = 0.937945
+INFO - 05/18/26 15:28:59 - 0:34:26 - Epoch 78
+INFO - 05/18/26 15:29:22 - 0:34:49 - Validation auc = 0.914902
+INFO - 05/18/26 15:29:23 - 0:34:50 - test auc = 0.937331
+INFO - 05/18/26 15:29:23 - 0:34:50 - Epoch 79
+INFO - 05/18/26 15:29:46 - 0:35:13 - Validation auc = 0.917059
+INFO - 05/18/26 15:29:47 - 0:35:14 - test auc = 0.937577
+INFO - 05/18/26 15:29:47 - 0:35:14 - Epoch 80
+INFO - 05/18/26 15:30:11 - 0:35:38 - Validation auc = 0.916209
+INFO - 05/18/26 15:30:11 - 0:35:38 - test auc = 0.937883
+INFO - 05/18/26 15:30:11 - 0:35:38 - Epoch 81
+INFO - 05/18/26 15:30:35 - 0:36:02 - Validation auc = 0.917647
+INFO - 05/18/26 15:30:36 - 0:36:03 - test auc = 0.938680
+INFO - 05/18/26 15:30:36 - 0:36:03 - Epoch 82
+INFO - 05/18/26 15:30:59 - 0:36:26 - Validation auc = 0.911634
+INFO - 05/18/26 15:31:00 - 0:36:27 - test auc = 0.933162
+INFO - 05/18/26 15:31:00 - 0:36:27 - Epoch 83
+INFO - 05/18/26 15:31:23 - 0:36:50 - Validation auc = 0.919281
+INFO - 05/18/26 15:31:24 - 0:36:51 - test auc = 0.932303
+INFO - 05/18/26 15:31:24 - 0:36:51 - Epoch 84
+INFO - 05/18/26 15:31:47 - 0:37:14 - Validation auc = 0.917190
+INFO - 05/18/26 15:31:48 - 0:37:15 - test auc = 0.937577
+INFO - 05/18/26 15:31:48 - 0:37:15 - Epoch 85
+INFO - 05/18/26 15:32:12 - 0:37:39 - Validation auc = 0.916732
+INFO - 05/18/26 15:32:13 - 0:37:40 - test auc = 0.930096
+INFO - 05/18/26 15:32:13 - 0:37:40 - Epoch 86
+INFO - 05/18/26 15:32:36 - 0:38:03 - Validation auc = 0.917059
+INFO - 05/18/26 15:32:37 - 0:38:04 - test auc = 0.930218
+INFO - 05/18/26 15:32:37 - 0:38:04 - Epoch 87
+INFO - 05/18/26 15:33:00 - 0:38:27 - Validation auc = 0.917059
+INFO - 05/18/26 15:33:00 - 0:38:27 - test auc = 0.937086
+INFO - 05/18/26 15:33:00 - 0:38:27 - Epoch 88
+INFO - 05/18/26 15:33:24 - 0:38:51 - Validation auc = 0.918497
+INFO - 05/18/26 15:33:25 - 0:38:52 - test auc = 0.930096
+INFO - 05/18/26 15:33:25 - 0:38:52 - Epoch 89
+INFO - 05/18/26 15:33:48 - 0:39:15 - Validation auc = 0.911503
+INFO - 05/18/26 15:33:49 - 0:39:16 - test auc = 0.932119
+INFO - 05/18/26 15:33:49 - 0:39:16 - Epoch 90
+INFO - 05/18/26 15:34:12 - 0:39:39 - Validation auc = 0.918889
+INFO - 05/18/26 15:34:12 - 0:39:39 - test auc = 0.930954
+INFO - 05/18/26 15:34:12 - 0:39:39 - Epoch 91
+INFO - 05/18/26 15:34:35 - 0:40:02 - Validation auc = 0.919673
+INFO - 05/18/26 15:34:36 - 0:40:03 - test auc = 0.931751
+INFO - 05/18/26 15:34:36 - 0:40:03 - Epoch 92
+INFO - 05/18/26 15:34:58 - 0:40:25 - Validation auc = 0.920458
+INFO - 05/18/26 15:34:59 - 0:40:26 - test auc = 0.932548
+INFO - 05/18/26 15:34:59 - 0:40:26 - Epoch 93
+INFO - 05/18/26 15:35:21 - 0:40:48 - Validation auc = 0.918758
+INFO - 05/18/26 15:35:22 - 0:40:49 - test auc = 0.930341
+INFO - 05/18/26 15:35:22 - 0:40:49 - Epoch 94
+INFO - 05/18/26 15:35:45 - 0:41:12 - Validation auc = 0.919281
+INFO - 05/18/26 15:35:45 - 0:41:12 - test auc = 0.930709
+INFO - 05/18/26 15:35:45 - 0:41:12 - Epoch 95
+INFO - 05/18/26 15:36:08 - 0:41:35 - Validation auc = 0.919281
+INFO - 05/18/26 15:36:09 - 0:41:36 - test auc = 0.930586
+INFO - 05/18/26 15:36:09 - 0:41:36 - Epoch 96
+INFO - 05/18/26 15:36:32 - 0:41:59 - Validation auc = 0.919804
+INFO - 05/18/26 15:36:33 - 0:42:00 - test auc = 0.930709
+INFO - 05/18/26 15:36:33 - 0:42:00 - Epoch 97
+INFO - 05/18/26 15:36:56 - 0:42:23 - Validation auc = 0.919542
+INFO - 05/18/26 15:36:57 - 0:42:24 - test auc = 0.930464
+INFO - 05/18/26 15:36:57 - 0:42:24 - Epoch 98
+INFO - 05/18/26 15:37:20 - 0:42:47 - Validation auc = 0.920458
+INFO - 05/18/26 15:37:21 - 0:42:48 - test auc = 0.931445
+INFO - 05/18/26 15:37:21 - 0:42:48 - Epoch 99
+INFO - 05/18/26 15:37:43 - 0:43:10 - Validation auc = 0.920784
+INFO - 05/18/26 15:37:44 - 0:43:11 - test auc = 0.932058
+INFO - 05/18/26 15:37:44 - 0:43:11 - Model best validation auc = 0.942614 on epoch 17
+DEBUG - 05/18/26 15:37:44 - 0:43:11 - Moving model to cuda
+INFO - 05/18/26 15:37:45 - 0:43:12 - Model test auc = 0.965906
+INFO - 05/18/26 15:37:45 - 0:43:12 - Run 0 checkpoint: dumped/0518-finetune/bbbp/seed_59/model.pt
+INFO - 05/18/26 15:37:45 - 0:43:12 - Saved seed summary: dumped/0518-finetune/bbbp/seed_results.json
+INFO - 05/18/26 15:37:45 - 0:43:12 - 1-time runs
+INFO - 05/18/26 15:37:45 - 0:43:12 - Seed 59 ==> test auc = 0.965906
+INFO - 05/18/26 15:37:45 - 0:43:12 - Best seed by test auc: 59 | score=0.965906 | model=dumped/0518-finetune/bbbp/seed_59/model.pt
+INFO - 05/18/26 15:37:45 - 0:43:12 - Overall test auc = 0.965906 +/- 0.000000

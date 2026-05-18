@@ -1,12 +1,12 @@
 python train.py \
-    --data_path ./data/bbbp.csv \
-    --dataset_type classification \
+    --data_path ./data/esol.csv \
+    --dataset_type regression \
     --epochs 100 \
-    --num_runs 10\
+    --num_runs 1\
     --gpu 0 \
     --batch_size 256 \
-    --seed 50 \
+    --seed 55 \
     --init_lr 1e-4  \
     --split_type 'scaffold_balanced' \
     --exp_name finetune \
-    --exp_id bbbp \
+    --exp_id esol \
